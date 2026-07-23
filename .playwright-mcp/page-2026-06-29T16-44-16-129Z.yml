@@ -1,0 +1,100 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "SahabatQu SahabatQu Qur'an, Akhlak, dan Leadership" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "SahabatQu" [ref=e6]
+          - generic [ref=e7]:
+            - paragraph [ref=e8]: SahabatQu
+            - paragraph [ref=e9]: Qur'an, Akhlak, dan Leadership
+        - navigation [ref=e10]:
+          - link "Home" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Profil" [ref=e12] [cursor=pointer]:
+            - /url: /#profil
+          - link "Pendidikan" [ref=e13] [cursor=pointer]:
+            - /url: /pendidikan
+          - link "Fasilitas" [ref=e14] [cursor=pointer]:
+            - /url: /fasilitas
+          - link "Galeri" [ref=e15] [cursor=pointer]:
+            - /url: /galeri
+          - link "FAQ" [ref=e16] [cursor=pointer]:
+            - /url: /faq
+          - link "Kontak" [ref=e17] [cursor=pointer]:
+            - /url: /#kontak
+        - link "Daftar Sekarang" [ref=e19] [cursor=pointer]:
+          - /url: https://wa.me/6281234567890
+          - img
+          - text: Daftar Sekarang
+    - main [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e23]:
+          - heading "Galeri suasana belajar dan pembinaan santri." [level=1] [ref=e24]
+          - paragraph [ref=e25]: Dokumentasi kegiatan akademik, tahfizh, dan momen kebersamaan di lingkungan SahabatQu.
+        - generic [ref=e28]:
+          - button "Pelantikan pengurus santri di area pesantren Pelantikan pengurus santri di area pesantren" [ref=e29]:
+            - img "Pelantikan pengurus santri di area pesantren" [ref=e30]
+            - generic [ref=e31]: Pelantikan pengurus santri di area pesantren
+          - button "Suasana belajar di kelas SahabatQu Suasana belajar di kelas SahabatQu" [ref=e32]:
+            - img "Suasana belajar di kelas SahabatQu" [ref=e33]
+            - generic [ref=e34]: Suasana belajar di kelas SahabatQu
+          - button "Kegiatan praktik dan pembinaan keterampilan santri Kegiatan praktik dan pembinaan keterampilan santri" [ref=e35]:
+            - img "Kegiatan praktik dan pembinaan keterampilan santri" [ref=e36]
+            - generic [ref=e37]: Kegiatan praktik dan pembinaan keterampilan santri
+          - button "Pembelajaran di laboratorium komputer Pembelajaran di laboratorium komputer" [ref=e38]:
+            - img "Pembelajaran di laboratorium komputer" [ref=e39]
+            - generic [ref=e40]: Pembelajaran di laboratorium komputer
+          - button "Wisuda tahfizh dan momen apresiasi santri Wisuda tahfizh dan momen apresiasi santri" [ref=e41]:
+            - img "Wisuda tahfizh dan momen apresiasi santri" [ref=e42]
+            - generic [ref=e43]: Wisuda tahfizh dan momen apresiasi santri
+          - button "Pendampingan belajar dan evaluasi santri Pendampingan belajar dan evaluasi santri" [ref=e44]:
+            - img "Pendampingan belajar dan evaluasi santri" [ref=e45]
+            - generic [ref=e46]: Pendampingan belajar dan evaluasi santri
+          - button "Kegiatan bersama dan pembinaan karakter Kegiatan bersama dan pembinaan karakter" [ref=e47]:
+            - img "Kegiatan bersama dan pembinaan karakter" [ref=e48]
+            - generic [ref=e49]: Kegiatan bersama dan pembinaan karakter
+          - button "Haflah akhirussanah dan suasana acara resmi Haflah akhirussanah dan suasana acara resmi" [ref=e50]:
+            - img "Haflah akhirussanah dan suasana acara resmi" [ref=e51]
+            - generic [ref=e52]: Haflah akhirussanah dan suasana acara resmi
+          - button "Lingkungan pesantren yang tertata dan nyaman Lingkungan pesantren yang tertata dan nyaman" [ref=e53]:
+            - img "Lingkungan pesantren yang tertata dan nyaman" [ref=e54]
+            - generic [ref=e55]: Lingkungan pesantren yang tertata dan nyaman
+    - contentinfo [ref=e56]:
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]:
+            - img "SahabatQu" [ref=e60]
+            - generic [ref=e61]:
+              - paragraph [ref=e62]: SahabatQu
+              - paragraph [ref=e63]: Qur'an, Akhlak, dan Leadership
+          - paragraph [ref=e64]: Pesantren modern yang menyiapkan generasi Qurani dengan akademik terarah, adab yang kuat, dan pembinaan kepemimpinan yang nyata.
+        - generic [ref=e65]:
+          - heading "Navigasi" [level=2] [ref=e66]
+          - navigation [ref=e67]:
+            - link "Home" [ref=e68] [cursor=pointer]:
+              - /url: /
+            - link "Profil" [ref=e69] [cursor=pointer]:
+              - /url: /#profil
+            - link "Pendidikan" [ref=e70] [cursor=pointer]:
+              - /url: /pendidikan
+            - link "Fasilitas" [ref=e71] [cursor=pointer]:
+              - /url: /fasilitas
+            - link "Galeri" [ref=e72] [cursor=pointer]:
+              - /url: /galeri
+            - link "FAQ" [ref=e73] [cursor=pointer]:
+              - /url: /faq
+            - link "Kontak" [ref=e74] [cursor=pointer]:
+              - /url: /#kontak
+        - generic [ref=e75]:
+          - heading "Kontak" [level=2] [ref=e76]
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: Jl. Pendidikan SahabatQu, Liang, Maluku Tengah
+            - paragraph [ref=e79]: info@sahabatqu.id
+            - paragraph [ref=e80]: Senin - Sabtu, 08.00 - 16.00 WIT
+          - link "Hubungi Tim Pendaftaran" [ref=e81] [cursor=pointer]:
+            - /url: https://wa.me/6281234567890
+            - img
+            - text: Hubungi Tim Pendaftaran
+      - generic [ref=e82]: © 2026 Pondok Pesantren Tahfizhul Quran SahabatQu. All rights reserved.
+  - alert [ref=e83]

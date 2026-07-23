@@ -1,0 +1,109 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "SahabatQu SahabatQu Qur'an, Akhlak, dan Leadership" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "SahabatQu" [ref=e6]
+          - generic [ref=e7]:
+            - paragraph [ref=e8]: SahabatQu
+            - paragraph [ref=e9]: Qur'an, Akhlak, dan Leadership
+        - navigation [ref=e10]:
+          - link "Home" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Profil" [ref=e12] [cursor=pointer]:
+            - /url: /#profil
+          - link "Pendidikan" [ref=e13] [cursor=pointer]:
+            - /url: /pendidikan
+          - link "Fasilitas" [ref=e14] [cursor=pointer]:
+            - /url: /fasilitas
+          - link "Galeri" [ref=e15] [cursor=pointer]:
+            - /url: /galeri
+          - link "FAQ" [ref=e16] [cursor=pointer]:
+            - /url: /faq
+          - link "Kontak" [ref=e17] [cursor=pointer]:
+            - /url: /#kontak
+        - link "Daftar Sekarang" [ref=e19] [cursor=pointer]:
+          - /url: https://wa.me/6281234567890
+          - img
+          - text: Daftar Sekarang
+    - main [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e23]:
+          - heading "FAQ untuk keluarga yang sedang mempertimbangkan SahabatQu." [level=1] [ref=e24]
+          - paragraph [ref=e25]: Mulai dari alur pendaftaran sampai pola pembinaan boarding, semua jawaban utama dirangkum di sini.
+        - generic [ref=e28]:
+          - tablist [ref=e29]:
+            - tab "Pendaftaran" [selected] [ref=e30]:
+              - img
+              - text: Pendaftaran
+            - tab "Program" [ref=e31]:
+              - img
+              - text: Program
+            - tab "Boarding" [ref=e32]:
+              - img
+              - text: Boarding
+            - tab "Biaya" [ref=e33]:
+              - img
+              - text: Biaya
+            - tab "Lainnya" [ref=e34]:
+              - img
+              - text: Lainnya
+          - tabpanel "Pendaftaran" [ref=e35]:
+            - generic [ref=e36]:
+              - generic [ref=e38]: Pendaftaran
+              - generic [ref=e40]:
+                - heading "Bagaimana alur pendaftaran santri baru?" [level=3] [ref=e42]:
+                  - button "Bagaimana alur pendaftaran santri baru?" [ref=e43]:
+                    - text: Bagaimana alur pendaftaran santri baru?
+                    - img
+                - heading "Apa saja materi tes masuk?" [level=3] [ref=e45]:
+                  - button "Apa saja materi tes masuk?" [ref=e46]:
+                    - text: Apa saja materi tes masuk?
+                    - img
+                - heading "Apakah tersedia jalur prestasi?" [level=3] [ref=e48]:
+                  - button "Apakah tersedia jalur prestasi?" [ref=e49]:
+                    - text: Apakah tersedia jalur prestasi?
+                    - img
+                - heading "Kapan waktu terbaik untuk survey lokasi?" [level=3] [ref=e51]:
+                  - button "Kapan waktu terbaik untuk survey lokasi?" [ref=e52]:
+                    - text: Kapan waktu terbaik untuk survey lokasi?
+                    - img
+    - contentinfo [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - img "SahabatQu" [ref=e57]
+            - generic [ref=e58]:
+              - paragraph [ref=e59]: SahabatQu
+              - paragraph [ref=e60]: Qur'an, Akhlak, dan Leadership
+          - paragraph [ref=e61]: Pesantren modern yang menyiapkan generasi Qurani dengan akademik terarah, adab yang kuat, dan pembinaan kepemimpinan yang nyata.
+        - generic [ref=e62]:
+          - heading "Navigasi" [level=2] [ref=e63]
+          - navigation [ref=e64]:
+            - link "Home" [ref=e65] [cursor=pointer]:
+              - /url: /
+            - link "Profil" [ref=e66] [cursor=pointer]:
+              - /url: /#profil
+            - link "Pendidikan" [ref=e67] [cursor=pointer]:
+              - /url: /pendidikan
+            - link "Fasilitas" [ref=e68] [cursor=pointer]:
+              - /url: /fasilitas
+            - link "Galeri" [ref=e69] [cursor=pointer]:
+              - /url: /galeri
+            - link "FAQ" [ref=e70] [cursor=pointer]:
+              - /url: /faq
+            - link "Kontak" [ref=e71] [cursor=pointer]:
+              - /url: /#kontak
+        - generic [ref=e72]:
+          - heading "Kontak" [level=2] [ref=e73]
+          - generic [ref=e74]:
+            - paragraph [ref=e75]: Jl. Pendidikan SahabatQu, Liang, Maluku Tengah
+            - paragraph [ref=e76]: info@sahabatqu.id
+            - paragraph [ref=e77]: Senin - Sabtu, 08.00 - 16.00 WIT
+          - link "Hubungi Tim Pendaftaran" [ref=e78] [cursor=pointer]:
+            - /url: https://wa.me/6281234567890
+            - img
+            - text: Hubungi Tim Pendaftaran
+      - generic [ref=e79]: © 2026 Pondok Pesantren Tahfizhul Quran SahabatQu. All rights reserved.
+  - alert [ref=e80]

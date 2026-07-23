@@ -1,0 +1,137 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "SahabatQu SahabatQu Qur'an, Akhlak, dan Leadership" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "SahabatQu" [ref=e6]
+          - generic [ref=e7]:
+            - paragraph [ref=e8]: SahabatQu
+            - paragraph [ref=e9]: Qur'an, Akhlak, dan Leadership
+        - navigation [ref=e10]:
+          - link "Home" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Profil" [ref=e12] [cursor=pointer]:
+            - /url: /#profil
+          - link "Pendidikan" [ref=e13] [cursor=pointer]:
+            - /url: /pendidikan
+          - link "Fasilitas" [ref=e14] [cursor=pointer]:
+            - /url: /fasilitas
+          - link "Galeri" [ref=e15] [cursor=pointer]:
+            - /url: /galeri
+          - link "FAQ" [ref=e16] [cursor=pointer]:
+            - /url: /faq
+          - link "Kontak" [ref=e17] [cursor=pointer]:
+            - /url: /#kontak
+        - link "Daftar Sekarang" [ref=e19] [cursor=pointer]:
+          - /url: https://wa.me/6281234567890
+          - img
+          - text: Daftar Sekarang
+    - main [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e23]:
+          - heading "Pendidikan yang menyeimbangkan tahfizh, akademik, dan adab." [level=1] [ref=e24]
+          - paragraph [ref=e25]: Setiap program di SahabatQu dibangun dengan ritme belajar yang jelas agar keluarga dapat memilih jalur yang paling sesuai.
+        - generic [ref=e27]:
+          - generic [ref=e28]: Kurikulum nasional, diniyah, dan tahfizh dirancang selaras.
+          - generic [ref=e29]: Monitoring perkembangan santri dilakukan bertahap dan komunikatif.
+          - generic [ref=e30]: Pembinaan karakter dan adab tidak dipisahkan dari kegiatan belajar.
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - img "SMP-SMA Boarding" [ref=e35]
+            - generic [ref=e36]:
+              - img [ref=e38]
+              - generic [ref=e40]:
+                - generic [ref=e41]: SMP-SMA Boarding
+                - paragraph [ref=e42]: Program berasrama dengan fokus pembinaan tahfizh, adab, akademik, dan kemandirian santri.
+                - paragraph [ref=e43]: Untuk santri yang ingin tumbuh penuh dalam ritme pesantren.
+            - list [ref=e45]:
+              - listitem [ref=e46]:
+                - generic [ref=e48]: Kurikulum nasional dan kurikulum pesantren berjalan terpadu
+              - listitem [ref=e49]:
+                - generic [ref=e51]: Tahfizh, murajaah, dan ibadah harian dengan pendampingan intensif
+              - listitem [ref=e52]:
+                - generic [ref=e54]: Pembinaan kemandirian, disiplin, dan kepemimpinan santri
+          - generic [ref=e55]:
+            - img "SMP TahfizhQu" [ref=e57]
+            - generic [ref=e58]:
+              - img [ref=e60]
+              - generic [ref=e62]:
+                - generic [ref=e63]: SMP TahfizhQu
+                - paragraph [ref=e64]: Program intensif untuk target hafalan lebih besar dengan penguatan akademik dasar dan adab.
+                - paragraph [ref=e65]: Untuk calon santri yang siap pada ritme tahfizh lebih padat.
+            - list [ref=e67]:
+              - listitem [ref=e68]:
+                - generic [ref=e70]: Porsi tahfizh lebih dominan dengan evaluasi berkala
+              - listitem [ref=e71]:
+                - generic [ref=e73]: Penguatan baca, hafalan, dan pemahaman dasar Al-Qur'an
+              - listitem [ref=e74]:
+                - generic [ref=e76]: Pendampingan karakter dan keteraturan belajar harian
+          - generic [ref=e77]:
+            - img "SMP-SMA Fullday School" [ref=e79]
+            - generic [ref=e80]:
+              - img [ref=e82]
+              - generic [ref=e84]:
+                - generic [ref=e85]: SMP-SMA Fullday School
+                - paragraph [ref=e86]: Program harian tanpa menginap yang memadukan tahfizh, akademik, dan pembinaan karakter.
+                - paragraph [ref=e87]: Untuk keluarga yang menginginkan sekolah Islam terpadu tanpa asrama.
+            - list [ref=e89]:
+              - listitem [ref=e90]:
+                - generic [ref=e92]: Belajar sampai sore dengan ritme ibadah dan tahfizh yang terjaga
+              - listitem [ref=e93]:
+                - generic [ref=e95]: Kurikulum nasional dipadukan diniyah dan penguatan bahasa
+              - listitem [ref=e96]:
+                - generic [ref=e98]: Cocok bagi siswa yang tetap pulang ke rumah setiap hari
+          - generic [ref=e99]:
+            - img "SD SahabatQu" [ref=e101]
+            - generic [ref=e102]:
+              - img [ref=e104]
+              - generic [ref=e106]:
+                - generic [ref=e107]: SD SahabatQu
+                - paragraph [ref=e108]: Jenjang dasar untuk membangun kecintaan pada Al-Qur'an, akhlak, literasi, dan kebiasaan belajar yang baik.
+                - paragraph [ref=e109]: Fondasi awal sebelum masuk ke pembinaan yang lebih tinggi.
+            - list [ref=e111]:
+              - listitem [ref=e112]:
+                - generic [ref=e114]: Pembelajaran tematik dengan penguatan Qur'an sejak dini
+              - listitem [ref=e115]:
+                - generic [ref=e117]: Pendekatan yang ramah anak, tertib, dan membangun karakter
+              - listitem [ref=e118]:
+                - generic [ref=e120]: Kolaborasi aktif antara sekolah dan orang tua
+    - contentinfo [ref=e121]:
+      - generic [ref=e122]:
+        - generic [ref=e123]:
+          - generic [ref=e124]:
+            - img "SahabatQu" [ref=e125]
+            - generic [ref=e126]:
+              - paragraph [ref=e127]: SahabatQu
+              - paragraph [ref=e128]: Qur'an, Akhlak, dan Leadership
+          - paragraph [ref=e129]: Pesantren modern yang menyiapkan generasi Qurani dengan akademik terarah, adab yang kuat, dan pembinaan kepemimpinan yang nyata.
+        - generic [ref=e130]:
+          - heading "Navigasi" [level=2] [ref=e131]
+          - navigation [ref=e132]:
+            - link "Home" [ref=e133] [cursor=pointer]:
+              - /url: /
+            - link "Profil" [ref=e134] [cursor=pointer]:
+              - /url: /#profil
+            - link "Pendidikan" [ref=e135] [cursor=pointer]:
+              - /url: /pendidikan
+            - link "Fasilitas" [ref=e136] [cursor=pointer]:
+              - /url: /fasilitas
+            - link "Galeri" [ref=e137] [cursor=pointer]:
+              - /url: /galeri
+            - link "FAQ" [ref=e138] [cursor=pointer]:
+              - /url: /faq
+            - link "Kontak" [ref=e139] [cursor=pointer]:
+              - /url: /#kontak
+        - generic [ref=e140]:
+          - heading "Kontak" [level=2] [ref=e141]
+          - generic [ref=e142]:
+            - paragraph [ref=e143]: Jl. Pendidikan SahabatQu, Liang, Maluku Tengah
+            - paragraph [ref=e144]: info@sahabatqu.id
+            - paragraph [ref=e145]: Senin - Sabtu, 08.00 - 16.00 WIT
+          - link "Hubungi Tim Pendaftaran" [ref=e146] [cursor=pointer]:
+            - /url: https://wa.me/6281234567890
+            - img
+            - text: Hubungi Tim Pendaftaran
+      - generic [ref=e147]: © 2026 Pondok Pesantren Tahfizhul Quran SahabatQu. All rights reserved.
+  - alert [ref=e148]

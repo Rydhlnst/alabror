@@ -1,0 +1,396 @@
+- generic:
+  - generic:
+    - banner:
+      - generic:
+        - link:
+          - /url: /
+          - img
+          - generic:
+            - paragraph: SahabatQu
+        - button [expanded]:
+          - img
+    - main:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - heading [level=1]: Pondok Pesantren Tahfizhul Quran SahabatQu
+                - paragraph: Menyiapkan generasi yang dekat dengan Al-Qur'an, matang dalam adab, dan siap memimpin melalui ritme belajar yang terarah.
+              - generic:
+                - link:
+                  - /url: https://wa.me/6281234567890
+                  - img
+                  - text: Daftar Sekarang
+                - link:
+                  - /url: "#"
+                  - text: Download Brosur
+              - generic:
+                - generic:
+                  - paragraph: "4"
+                  - paragraph: Program utama
+                - generic:
+                  - paragraph: Tahfizh
+                  - paragraph: Pembinaan harian
+                - generic:
+                  - paragraph: Boarding
+                  - paragraph: dan Fullday
+            - generic:
+              - generic:
+                - img
+                - generic:
+                  - paragraph: Liang, Maluku Tengah
+                  - paragraph: Pembinaan terstruktur untuk boarding, tahfizh, fullday, dan SD.
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - heading [level=2]: SahabatQu News
+                - paragraph: Kabar penerimaan santri, agenda tahfizh, dan pembinaan terbaru dari lingkungan SahabatQu.
+            - generic:
+              - generic:
+                - generic:
+                  - paragraph: Juni 2026
+                  - generic: Penerimaan Santri Baru Tahun Ajaran 2026/2027 Telah Dibuka
+                - generic:
+                  - paragraph: Pendaftaran dibuka untuk program boarding, SMP TahfizhQu, fullday school, dan SD SahabatQu.
+                  - link:
+                    - /url: "#"
+                    - text: Lihat info
+                    - img
+              - generic:
+                - generic:
+                  - paragraph: Mei 2026
+                  - generic: Wisuda Tahfizh dan Haflah Akhirussanah Berlangsung Khidmat
+                - generic:
+                  - paragraph: Momen apresiasi bagi santri yang menyelesaikan target hafalan sekaligus penutup tahun pembinaan.
+                  - link:
+                    - /url: "#"
+                    - text: Lihat info
+                    - img
+              - generic:
+                - generic:
+                  - paragraph: April 2026
+                  - generic: Program Bahasa Arab dan Leadership Camp Dimulai Semester Ini
+                - generic:
+                  - paragraph: Santri mendapatkan porsi pembinaan bahasa, public speaking, dan kerja tim dalam agenda terpadu.
+                  - link:
+                    - /url: "#"
+                    - text: Lihat info
+                    - img
+        - generic:
+          - generic:
+            - generic:
+              - heading [level=2]: Mitra dan arah pembinaan yang jelas
+              - paragraph: SahabatQu menggabungkan tahfizh, akademik, adab, dan leadership ke dalam struktur belajar yang konsisten dan mudah dipahami keluarga.
+            - generic:
+              - generic:
+                - paragraph: Kurikulum Nasional
+                - paragraph: Terintegrasi
+              - generic:
+                - paragraph: Tahfizh Intensif
+                - paragraph: Target bertahap
+              - generic:
+                - paragraph: Pembinaan Adab
+                - paragraph: Setiap hari
+              - generic:
+                - paragraph: Program Leadership
+                - paragraph: Praktis
+        - generic:
+          - generic:
+            - generic:
+              - heading [level=2]: Mengapa SahabatQu?
+              - paragraph: Sistem pembinaan dirancang untuk menjaga keseimbangan antara hafalan, pembiasaan ibadah, akademik, dan karakter santri.
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic: Tahfizh yang Terukur
+                - generic: Setiap jenjang memiliki target hafalan, murajaah, dan evaluasi yang disesuaikan dengan kesiapan santri.
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic: Adab dan Ibadah Harian
+                - generic: Pembiasaan shalat berjamaah, dzikir, sunnah, dan kedisiplinan menjadi bagian dari ritme keseharian.
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic: Akademik Tetap Kuat
+                - generic: Kurikulum nasional berjalan berdampingan dengan diniyah dan penguatan literasi untuk jenjang lanjut.
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic: Lingkungan Tumbuh yang Aman
+                - generic: Asrama, kelas, dan area pembinaan dirancang mendukung fokus belajar, kemandirian, dan kenyamanan.
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic: Pembinaan Bahasa
+                - generic: Penguatan Bahasa Arab menjadi bekal komunikasi, pemahaman kitab, dan kepercayaan diri santri.
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic: Kepemimpinan Sejak Dini
+                - generic: Santri dibina untuk memimpin diri, tim, dan amanah melalui kegiatan organisasi serta proyek nyata.
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - heading [level=2]: Pendidikan SahabatQu
+                - paragraph: Empat jalur pembinaan utama untuk kebutuhan keluarga yang berbeda, dengan pondasi Qur'an dan akhlak yang sama kuatnya.
+              - link:
+                - /url: /pendidikan
+                - text: Lihat semua program
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img
+                      - generic:
+                        - heading [level=3]: SMP-SMA Boarding
+                        - paragraph: Program berasrama dengan fokus pembinaan tahfizh, adab, akademik, dan kemandirian santri.
+                        - paragraph: Untuk santri yang ingin tumbuh penuh dalam ritme pesantren.
+                    - list:
+                      - listitem:
+                        - generic: Kurikulum nasional dan kurikulum pesantren berjalan terpadu
+                      - listitem:
+                        - generic: Tahfizh, murajaah, dan ibadah harian dengan pendampingan intensif
+                      - listitem:
+                        - generic: Pembinaan kemandirian, disiplin, dan kepemimpinan santri
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img
+                      - generic:
+                        - heading [level=3]: SMP TahfizhQu
+                        - paragraph: Program intensif untuk target hafalan lebih besar dengan penguatan akademik dasar dan adab.
+                        - paragraph: Untuk calon santri yang siap pada ritme tahfizh lebih padat.
+                    - list:
+                      - listitem:
+                        - generic: Porsi tahfizh lebih dominan dengan evaluasi berkala
+                      - listitem:
+                        - generic: Penguatan baca, hafalan, dan pemahaman dasar Al-Qur'an
+                      - listitem:
+                        - generic: Pendampingan karakter dan keteraturan belajar harian
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img
+                      - generic:
+                        - heading [level=3]: SMP-SMA Fullday School
+                        - paragraph: Program harian tanpa menginap yang memadukan tahfizh, akademik, dan pembinaan karakter.
+                        - paragraph: Untuk keluarga yang menginginkan sekolah Islam terpadu tanpa asrama.
+                    - list:
+                      - listitem:
+                        - generic: Belajar sampai sore dengan ritme ibadah dan tahfizh yang terjaga
+                      - listitem:
+                        - generic: Kurikulum nasional dipadukan diniyah dan penguatan bahasa
+                      - listitem:
+                        - generic: Cocok bagi siswa yang tetap pulang ke rumah setiap hari
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img
+                      - generic:
+                        - heading [level=3]: SD SahabatQu
+                        - paragraph: Jenjang dasar untuk membangun kecintaan pada Al-Qur'an, akhlak, literasi, dan kebiasaan belajar yang baik.
+                        - paragraph: Fondasi awal sebelum masuk ke pembinaan yang lebih tinggi.
+                    - list:
+                      - listitem:
+                        - generic: Pembelajaran tematik dengan penguatan Qur'an sejak dini
+                      - listitem:
+                        - generic: Pendekatan yang ramah anak, tertib, dan membangun karakter
+                      - listitem:
+                        - generic: Kolaborasi aktif antara sekolah dan orang tua
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - heading [level=2]: Fasilitas
+                - paragraph: Ruang dan sarana belajar yang mendukung fokus, kesehatan, dan perkembangan aktivitas santri.
+              - link:
+                - /url: /fasilitas
+                - text: Lihat detail fasilitas
+            - generic:
+              - generic:
+                - generic:
+                  - img
+                - generic:
+                  - generic:
+                    - img
+                  - generic: Area Belajar dan Kelas
+                - generic: Ruang belajar yang tertata untuk kelas formal, tahfizh, dan pembinaan kelompok kecil.
+              - generic:
+                - generic:
+                  - img
+                - generic:
+                  - generic:
+                    - img
+                  - generic: Laboratorium Komputer
+                - generic: Fasilitas penunjang literasi digital dan pembelajaran terarah sesuai jenjang santri.
+              - generic:
+                - generic:
+                  - img
+                - generic:
+                  - generic:
+                    - img
+                  - generic: Lapangan dan Aktivitas Fisik
+                - generic: Ruang olahraga untuk membangun kebugaran, sportivitas, dan keseimbangan aktivitas santri.
+              - generic:
+                - generic:
+                  - img
+                - generic:
+                  - generic:
+                    - img
+                  - generic: Medical Center
+                - generic: Layanan kesehatan dasar dan pertolongan pertama untuk mendukung keamanan aktivitas harian.
+        - generic:
+          - generic:
+            - generic:
+              - heading [level=2]: Pertanyaan umum
+              - paragraph: Ringkasan jawaban untuk hal yang paling sering ditanyakan keluarga sebelum mendaftar.
+              - link:
+                - /url: /faq
+                - text: Lihat semua FAQ
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Bagaimana alur pendaftaran santri baru?
+                - generic: Isi formulir pendaftaran, lengkapi berkas, lakukan verifikasi, lalu ikuti jadwal tes dan wawancara sesuai program yang dipilih.
+              - generic:
+                - generic:
+                  - generic: Apa saja materi tes masuk?
+                - generic: Umumnya mencakup tes akademik dasar, baca Al-Qur'an, dan wawancara. Program tahfizh intensif dapat memiliki evaluasi hafalan tambahan.
+              - generic:
+                - generic:
+                  - generic: Apakah tersedia jalur prestasi?
+                - generic: Tersedia jalur tertentu sesuai kebijakan penerimaan tahun berjalan. Hubungi tim pendaftaran untuk informasi rinci.
+        - generic:
+          - generic:
+            - generic:
+              - heading [level=2]: Testimoni keluarga dan alumni
+              - paragraph: Pengalaman nyata dari orang tua dan santri yang merasakan pembinaan di SahabatQu.
+            - generic:
+              - generic:
+                - generic:
+                  - img
+                  - generic:
+                    - generic: Wali Santri Boarding
+                    - paragraph: Orang tua santri kelas VIII
+                - generic: “Perubahan anak kami terasa jelas. Ia lebih tertib, lebih dekat dengan Al-Qur'an, dan lebih percaya diri dalam keseharian.”
+              - generic:
+                - generic:
+                  - img
+                  - generic:
+                    - generic: Alumni Program Tahfizh
+                    - paragraph: Lulusan angkatan terbaru
+                - generic: “Pembinaan di SahabatQu tidak hanya soal hafalan. Kami dibiasakan menjaga adab, tanggung jawab, dan cara berpikir yang lebih matang.”
+              - generic:
+                - generic:
+                  - img
+                  - generic:
+                    - generic: Wali Murid Fullday
+                    - paragraph: Orang tua siswa SMP
+                - generic: “Kami merasa terbantu karena anak mendapat suasana belajar yang islami, terarah, dan tetap kuat di akademik.”
+        - generic:
+          - generic:
+            - generic:
+              - heading [level=2]: Siap mengenal SahabatQu lebih dekat?
+              - paragraph: Hubungi tim kami untuk konsultasi program, jadwal survey, dan informasi pendaftaran terbaru.
+            - link:
+              - /url: https://wa.me/6281234567890
+              - img
+              - text: Hubungi via WhatsApp
+    - contentinfo:
+      - generic:
+        - generic:
+          - generic:
+            - img
+            - generic:
+              - paragraph: SahabatQu
+              - paragraph: Qur'an, Akhlak, dan Leadership
+          - paragraph: Pesantren modern yang menyiapkan generasi Qurani dengan akademik terarah, adab yang kuat, dan pembinaan kepemimpinan yang nyata.
+        - generic:
+          - heading [level=2]: Navigasi
+          - navigation:
+            - link:
+              - /url: /
+              - text: Home
+            - link:
+              - /url: /#profil
+              - text: Profil
+            - link:
+              - /url: /pendidikan
+              - text: Pendidikan
+            - link:
+              - /url: /fasilitas
+              - text: Fasilitas
+            - link:
+              - /url: /galeri
+              - text: Galeri
+            - link:
+              - /url: /faq
+              - text: FAQ
+            - link:
+              - /url: /#kontak
+              - text: Kontak
+        - generic:
+          - heading [level=2]: Kontak
+          - generic:
+            - paragraph: Jl. Pendidikan SahabatQu, Liang, Maluku Tengah
+            - paragraph: info@sahabatqu.id
+            - paragraph: Senin - Sabtu, 08.00 - 16.00 WIT
+          - link:
+            - /url: https://wa.me/6281234567890
+            - img
+            - text: Hubungi Tim Pendaftaran
+      - generic: © 2026 Pondok Pesantren Tahfizhul Quran SahabatQu. All rights reserved.
+  - alert
+  - dialog "SahabatQu" [ref=e365]:
+    - generic [ref=e366]:
+      - heading "SahabatQu" [level=2] [ref=e367]
+      - paragraph [ref=e368]: Qur'an, Akhlak, dan Leadership
+    - navigation [ref=e369]:
+      - link "Home" [ref=e370] [cursor=pointer]:
+        - /url: /
+      - link "Profil" [ref=e371] [cursor=pointer]:
+        - /url: /#profil
+      - link "Pendidikan" [ref=e372] [cursor=pointer]:
+        - /url: /pendidikan
+      - link "Fasilitas" [ref=e373] [cursor=pointer]:
+        - /url: /fasilitas
+      - link "Galeri" [ref=e374] [cursor=pointer]:
+        - /url: /galeri
+      - link "FAQ" [ref=e375] [cursor=pointer]:
+        - /url: /faq
+      - link "Kontak" [ref=e376] [cursor=pointer]:
+        - /url: /#kontak
+    - link "Daftar Sekarang" [ref=e378] [cursor=pointer]:
+      - /url: https://wa.me/6281234567890
+      - img
+      - text: Daftar Sekarang
+    - button "Close" [active] [ref=e379]:
+      - img
+      - generic [ref=e380]: Close

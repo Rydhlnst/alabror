@@ -1,0 +1,332 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Al-Anshor Liang Al-Anshor Liang Ilmu, Akhlak, dan Kemandirian" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Al-Anshor Liang" [ref=e6]
+          - generic [ref=e7]:
+            - paragraph [ref=e8]: Al-Anshor Liang
+            - paragraph [ref=e9]: Ilmu, Akhlak, dan Kemandirian
+        - navigation [ref=e10]:
+          - link "Home" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Profil" [ref=e12] [cursor=pointer]:
+            - /url: /#profil
+          - link "Pendidikan" [ref=e13] [cursor=pointer]:
+            - /url: /pendidikan
+          - link "Fasilitas" [ref=e14] [cursor=pointer]:
+            - /url: /fasilitas
+          - link "Galeri" [ref=e15] [cursor=pointer]:
+            - /url: /galeri
+          - link "FAQ" [ref=e16] [cursor=pointer]:
+            - /url: /faq
+          - link "Kontak" [ref=e17] [cursor=pointer]:
+            - /url: /#kontak
+        - link "Daftar Sekarang" [ref=e19] [cursor=pointer]:
+          - /url: https://wa.me/6281234567890
+          - img
+          - text: Daftar Sekarang
+    - main [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - generic [ref=e25]:
+              - heading "Pondok Pesantren Al-Anshor Liang" [level=1] [ref=e26]
+              - paragraph [ref=e27]: Lembaga pendidikan dan pembinaan santri yang lahir dari kepedulian sosial untuk membentuk generasi Islam yang berakhlak mulia, mandiri, dan bermanfaat bagi masyarakat.
+            - generic [ref=e28]:
+              - link "Daftar Sekarang" [ref=e29] [cursor=pointer]:
+                - /url: https://wa.me/6281234567890
+                - img
+                - text: Daftar Sekarang
+              - link "Download Brosur" [ref=e30] [cursor=pointer]:
+                - /url: "#"
+            - generic [ref=e31]:
+              - generic [ref=e32]:
+                - paragraph [ref=e33]: "4"
+                - paragraph [ref=e34]: Program utama
+              - generic [ref=e35]:
+                - paragraph [ref=e36]: Tahfizh
+                - paragraph [ref=e37]: Pembinaan harian
+              - generic [ref=e38]:
+                - paragraph [ref=e39]: Boarding
+                - paragraph [ref=e40]: dan Fullday
+          - generic [ref=e42]:
+            - img "Al-Anshor Liang" [ref=e43]
+            - generic [ref=e44]:
+              - paragraph [ref=e45]: Liang, Maluku Tengah, Maluku
+              - paragraph [ref=e46]: Pendidikan, pengasuhan, dan pembinaan santri yang tumbuh dari misi sosial dan dakwah Islam.
+        - generic [ref=e48]:
+          - generic [ref=e50]:
+            - heading "Berita dan Informasi" [level=2] [ref=e51]
+            - paragraph [ref=e52]: Informasi penerimaan santri, kegiatan pesantren, dan agenda pembinaan terbaru dari Al-Anshor Liang.
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - generic [ref=e55]:
+                - paragraph [ref=e56]: Juni 2026
+                - generic [ref=e57]: Penerimaan Santri Baru Tahun Ajaran 2026/2027 Telah Dibuka
+              - generic [ref=e58]:
+                - paragraph [ref=e59]: Pendaftaran dibuka untuk program boarding, SMP TahfizhQu, fullday school, dan SD SahabatQu.
+                - link "Lihat info" [ref=e60] [cursor=pointer]:
+                  - /url: "#"
+                  - text: Lihat info
+                  - img [ref=e61]
+            - generic [ref=e63]:
+              - generic [ref=e64]:
+                - paragraph [ref=e65]: Mei 2026
+                - generic [ref=e66]: Wisuda Tahfizh dan Haflah Akhirussanah Berlangsung Khidmat
+              - generic [ref=e67]:
+                - paragraph [ref=e68]: Momen apresiasi bagi santri yang menyelesaikan target hafalan sekaligus penutup tahun pembinaan.
+                - link "Lihat info" [ref=e69] [cursor=pointer]:
+                  - /url: "#"
+                  - text: Lihat info
+                  - img [ref=e70]
+            - generic [ref=e72]:
+              - generic [ref=e73]:
+                - paragraph [ref=e74]: April 2026
+                - generic [ref=e75]: Program Bahasa Arab dan Leadership Camp Dimulai Semester Ini
+              - generic [ref=e76]:
+                - paragraph [ref=e77]: Santri mendapatkan porsi pembinaan bahasa, public speaking, dan kerja tim dalam agenda terpadu.
+                - link "Lihat info" [ref=e78] [cursor=pointer]:
+                  - /url: "#"
+                  - text: Lihat info
+                  - img [ref=e79]
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - heading "Sejarah Singkat Pondok Pesantren Al-Anshor Liang" [level=2] [ref=e84]
+            - paragraph [ref=e85]: Pondok ini lahir dari kebutuhan nyata masyarakat Maluku untuk menghadirkan pendidikan, pengasuhan, dan pembinaan Islam bagi anak-anak yang membutuhkan.
+            - link "Lihat lokasi di Google Maps" [ref=e86] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/9ZxeKutNHJodArJV6
+          - generic [ref=e87]:
+            - paragraph [ref=e88]: Pondok Pesantren Al-Anshor berawal dari keprihatinan terhadap konflik sosial bernuansa SARA yang melanda Maluku pada tahun 1999-2004. Konflik tersebut meninggalkan dampak yang sangat besar, terutama bagi anak-anak yang kehilangan orang tua, berasal dari keluarga korban konflik, mengalami putus sekolah, berasal dari suku terasing, serta keluarga kurang mampu.
+            - paragraph [ref=e89]: Berangkat dari kondisi tersebut, Ust. Abu Imam Abdu Rohim Rumbara, M.H. bersama para aktivis dakwah dan sosial mendirikan Pondok Pesantren Al-Anshor pada 14 Februari 2004 sebagai lembaga pendidikan yang juga berfungsi sebagai panti asuhan. Tujuan utamanya adalah mengasuh, membina, dan menyekolahkan anak-anak yang membutuhkan, sekaligus menanamkan nilai-nilai Islam yang benar agar mereka tumbuh menjadi pribadi yang berakhlak mulia, mandiri, dan bermanfaat bagi masyarakat.
+            - paragraph [ref=e90]: Seiring dengan perkembangan jumlah santri, pada Agustus 2015 didirikan Pondok Pesantren Al-Anshor Liang sebagai cabang ketiga Pondok Pesantren Al-Anshor di Maluku. Pendirian pondok ini bertujuan untuk memisahkan tempat pembinaan santri putra (ikhwan) dan santri putri (akhwat), yang sebelumnya berada dalam satu lingkungan di Pondok Pesantren Al-Anshor Ambon. Dengan berdirinya Pondok Pesantren Al-Anshor Liang, proses pendidikan dan pembinaan santri dapat berlangsung lebih optimal sesuai dengan prinsip-prinsip pendidikan Islam.
+            - paragraph [ref=e91]: Hingga saat ini, Pondok Pesantren Al-Anshor terus berkembang dan memperoleh kepercayaan serta dukungan yang luas dari masyarakat.
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - heading "Mengapa Al-Anshor Liang?" [level=2] [ref=e95]
+            - paragraph [ref=e96]: Sistem pembinaan dirancang untuk menjaga keseimbangan antara hafalan, pembiasaan ibadah, akademik, dan karakter santri.
+          - generic [ref=e97]:
+            - generic [ref=e98]:
+              - generic [ref=e99]:
+                - img [ref=e101]
+                - generic [ref=e103]: Tahfizh yang Terukur
+              - generic [ref=e104]: Setiap jenjang memiliki target hafalan, murajaah, dan evaluasi yang disesuaikan dengan kesiapan santri.
+            - generic [ref=e105]:
+              - generic [ref=e106]:
+                - img [ref=e108]
+                - generic [ref=e110]: Adab dan Ibadah Harian
+              - generic [ref=e111]: Pembiasaan shalat berjamaah, dzikir, sunnah, dan kedisiplinan menjadi bagian dari ritme keseharian.
+            - generic [ref=e112]:
+              - generic [ref=e113]:
+                - img [ref=e115]
+                - generic [ref=e117]: Akademik Tetap Kuat
+              - generic [ref=e118]: Kurikulum nasional berjalan berdampingan dengan diniyah dan penguatan literasi untuk jenjang lanjut.
+            - generic [ref=e119]:
+              - generic [ref=e120]:
+                - img [ref=e122]
+                - generic [ref=e124]: Lingkungan Tumbuh yang Aman
+              - generic [ref=e125]: Asrama, kelas, dan area pembinaan dirancang mendukung fokus belajar, kemandirian, dan kenyamanan.
+            - generic [ref=e126]:
+              - generic [ref=e127]:
+                - img [ref=e129]
+                - generic [ref=e131]: Pembinaan Bahasa
+              - generic [ref=e132]: Penguatan Bahasa Arab menjadi bekal komunikasi, pemahaman kitab, dan kepercayaan diri santri.
+            - generic [ref=e133]:
+              - generic [ref=e134]:
+                - img [ref=e136]
+                - generic [ref=e138]: Kepemimpinan Sejak Dini
+              - generic [ref=e139]: Santri dibina untuk memimpin diri, tim, dan amanah melalui kegiatan organisasi serta proyek nyata.
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - generic [ref=e143]:
+              - heading "Program Pendidikan" [level=2] [ref=e144]
+              - paragraph [ref=e145]: Empat jalur pembinaan utama untuk kebutuhan keluarga yang berbeda, dengan pondasi Qur'an dan akhlak yang sama kuatnya.
+            - link "Lihat semua program" [ref=e146] [cursor=pointer]:
+              - /url: /pendidikan
+          - generic [ref=e147]:
+            - generic [ref=e149]:
+              - img "SMP-SMA Boarding" [ref=e151]
+              - generic [ref=e152]:
+                - generic [ref=e153]:
+                  - img [ref=e155]
+                  - generic [ref=e157]:
+                    - heading "SMP-SMA Boarding" [level=3] [ref=e158]
+                    - paragraph [ref=e159]: Program berasrama dengan fokus pembinaan tahfizh, adab, akademik, dan kemandirian santri.
+                    - paragraph [ref=e160]: Untuk santri yang ingin tumbuh penuh dalam ritme pesantren.
+                - list [ref=e161]:
+                  - listitem [ref=e162]:
+                    - generic [ref=e164]: Kurikulum nasional dan kurikulum pesantren berjalan terpadu
+                  - listitem [ref=e165]:
+                    - generic [ref=e167]: Tahfizh, murajaah, dan ibadah harian dengan pendampingan intensif
+                  - listitem [ref=e168]:
+                    - generic [ref=e170]: Pembinaan kemandirian, disiplin, dan kepemimpinan santri
+            - generic [ref=e172]:
+              - img "SMP TahfizhQu" [ref=e174]
+              - generic [ref=e175]:
+                - generic [ref=e176]:
+                  - img [ref=e178]
+                  - generic [ref=e180]:
+                    - heading "SMP TahfizhQu" [level=3] [ref=e181]
+                    - paragraph [ref=e182]: Program intensif untuk target hafalan lebih besar dengan penguatan akademik dasar dan adab.
+                    - paragraph [ref=e183]: Untuk calon santri yang siap pada ritme tahfizh lebih padat.
+                - list [ref=e184]:
+                  - listitem [ref=e185]:
+                    - generic [ref=e187]: Porsi tahfizh lebih dominan dengan evaluasi berkala
+                  - listitem [ref=e188]:
+                    - generic [ref=e190]: Penguatan baca, hafalan, dan pemahaman dasar Al-Qur'an
+                  - listitem [ref=e191]:
+                    - generic [ref=e193]: Pendampingan karakter dan keteraturan belajar harian
+            - generic [ref=e195]:
+              - img "SMP-SMA Fullday School" [ref=e197]
+              - generic [ref=e198]:
+                - generic [ref=e199]:
+                  - img [ref=e201]
+                  - generic [ref=e203]:
+                    - heading "SMP-SMA Fullday School" [level=3] [ref=e204]
+                    - paragraph [ref=e205]: Program harian tanpa menginap yang memadukan tahfizh, akademik, dan pembinaan karakter.
+                    - paragraph [ref=e206]: Untuk keluarga yang menginginkan sekolah Islam terpadu tanpa asrama.
+                - list [ref=e207]:
+                  - listitem [ref=e208]:
+                    - generic [ref=e210]: Belajar sampai sore dengan ritme ibadah dan tahfizh yang terjaga
+                  - listitem [ref=e211]:
+                    - generic [ref=e213]: Kurikulum nasional dipadukan diniyah dan penguatan bahasa
+                  - listitem [ref=e214]:
+                    - generic [ref=e216]: Cocok bagi siswa yang tetap pulang ke rumah setiap hari
+            - generic [ref=e218]:
+              - img "SD SahabatQu" [ref=e220]
+              - generic [ref=e221]:
+                - generic [ref=e222]:
+                  - img [ref=e224]
+                  - generic [ref=e226]:
+                    - heading "SD SahabatQu" [level=3] [ref=e227]
+                    - paragraph [ref=e228]: Jenjang dasar untuk membangun kecintaan pada Al-Qur'an, akhlak, literasi, dan kebiasaan belajar yang baik.
+                    - paragraph [ref=e229]: Fondasi awal sebelum masuk ke pembinaan yang lebih tinggi.
+                - list [ref=e230]:
+                  - listitem [ref=e231]:
+                    - generic [ref=e233]: Pembelajaran tematik dengan penguatan Qur'an sejak dini
+                  - listitem [ref=e234]:
+                    - generic [ref=e236]: Pendekatan yang ramah anak, tertib, dan membangun karakter
+                  - listitem [ref=e237]:
+                    - generic [ref=e239]: Kolaborasi aktif antara sekolah dan orang tua
+        - generic [ref=e241]:
+          - generic [ref=e242]:
+            - generic [ref=e243]:
+              - heading "Fasilitas" [level=2] [ref=e244]
+              - paragraph [ref=e245]: Ruang dan sarana belajar yang mendukung fokus, kesehatan, dan perkembangan aktivitas santri.
+            - link "Lihat detail fasilitas" [ref=e246] [cursor=pointer]:
+              - /url: /fasilitas
+          - generic [ref=e247]:
+            - generic [ref=e248]:
+              - img "Area Belajar dan Kelas" [ref=e250]
+              - generic [ref=e251]:
+                - img [ref=e253]
+                - generic [ref=e255]: Area Belajar dan Kelas
+              - generic [ref=e256]: Ruang belajar yang tertata untuk kelas formal, tahfizh, dan pembinaan kelompok kecil.
+            - generic [ref=e257]:
+              - img "Laboratorium Komputer" [ref=e259]
+              - generic [ref=e260]:
+                - img [ref=e262]
+                - generic [ref=e264]: Laboratorium Komputer
+              - generic [ref=e265]: Fasilitas penunjang literasi digital dan pembelajaran terarah sesuai jenjang santri.
+            - generic [ref=e266]:
+              - img "Lapangan dan Aktivitas Fisik" [ref=e268]
+              - generic [ref=e269]:
+                - img [ref=e271]
+                - generic [ref=e273]: Lapangan dan Aktivitas Fisik
+              - generic [ref=e274]: Ruang olahraga untuk membangun kebugaran, sportivitas, dan keseimbangan aktivitas santri.
+            - generic [ref=e275]:
+              - img "Medical Center" [ref=e277]
+              - generic [ref=e278]:
+                - img [ref=e280]
+                - generic [ref=e282]: Medical Center
+              - generic [ref=e283]: Layanan kesehatan dasar dan pertolongan pertama untuk mendukung keamanan aktivitas harian.
+        - generic [ref=e285]:
+          - generic [ref=e286]:
+            - heading "Pertanyaan umum" [level=2] [ref=e287]
+            - paragraph [ref=e288]: Ringkasan jawaban untuk hal yang paling sering ditanyakan keluarga sebelum mendaftar.
+            - link "Lihat semua FAQ" [ref=e289] [cursor=pointer]:
+              - /url: /faq
+          - generic [ref=e290]:
+            - generic [ref=e291]:
+              - generic [ref=e293]: Bagaimana alur pendaftaran santri baru?
+              - generic [ref=e294]: Isi formulir pendaftaran, lengkapi berkas, lakukan verifikasi, lalu ikuti jadwal tes dan wawancara sesuai program yang dipilih.
+            - generic [ref=e295]:
+              - generic [ref=e297]: Apa saja materi tes masuk?
+              - generic [ref=e298]: Umumnya mencakup tes akademik dasar, baca Al-Qur'an, dan wawancara. Program tahfizh intensif dapat memiliki evaluasi hafalan tambahan.
+            - generic [ref=e299]:
+              - generic [ref=e301]: Apakah tersedia jalur prestasi?
+              - generic [ref=e302]: Tersedia jalur tertentu sesuai kebijakan penerimaan tahun berjalan. Hubungi tim pendaftaran untuk informasi rinci.
+        - generic [ref=e304]:
+          - generic [ref=e305]:
+            - heading "Testimoni keluarga dan alumni" [level=2] [ref=e306]
+            - paragraph [ref=e307]: Pengalaman nyata dari orang tua dan santri yang merasakan pembinaan di Pondok Pesantren Al-Anshor Liang.
+          - generic [ref=e308]:
+            - generic [ref=e309]:
+              - generic [ref=e310]:
+                - img [ref=e311]
+                - generic [ref=e313]:
+                  - generic [ref=e314]: Wali Santri Boarding
+                  - paragraph [ref=e315]: Orang tua santri kelas VIII
+              - generic [ref=e316]: “Perubahan anak kami terasa jelas. Ia lebih tertib, lebih dekat dengan Al-Qur'an, dan lebih percaya diri dalam keseharian.”
+            - generic [ref=e317]:
+              - generic [ref=e318]:
+                - img [ref=e319]
+                - generic [ref=e321]:
+                  - generic [ref=e322]: Alumni Program Tahfizh
+                  - paragraph [ref=e323]: Lulusan angkatan terbaru
+              - generic [ref=e324]: “Pembinaan di SahabatQu tidak hanya soal hafalan. Kami dibiasakan menjaga adab, tanggung jawab, dan cara berpikir yang lebih matang.”
+            - generic [ref=e325]:
+              - generic [ref=e326]:
+                - img [ref=e327]
+                - generic [ref=e329]:
+                  - generic [ref=e330]: Wali Murid Fullday
+                  - paragraph [ref=e331]: Orang tua siswa SMP
+              - generic [ref=e332]: “Kami merasa terbantu karena anak mendapat suasana belajar yang islami, terarah, dan tetap kuat di akademik.”
+        - generic [ref=e334]:
+          - generic [ref=e335]:
+            - heading "Siap mengenal Al-Anshor Liang lebih dekat?" [level=2] [ref=e336]
+            - paragraph [ref=e337]: Hubungi tim kami untuk konsultasi program, jadwal survey, dan informasi pendaftaran terbaru.
+          - link "Hubungi via WhatsApp" [ref=e338] [cursor=pointer]:
+            - /url: https://wa.me/6281234567890
+            - img
+            - text: Hubungi via WhatsApp
+    - contentinfo [ref=e339]:
+      - generic [ref=e340]:
+        - generic [ref=e341]:
+          - generic [ref=e342]:
+            - img "Al-Anshor Liang" [ref=e343]
+            - generic [ref=e344]:
+              - paragraph [ref=e345]: Al-Anshor Liang
+              - paragraph [ref=e346]: Ilmu, Akhlak, dan Kemandirian
+          - paragraph [ref=e347]: Lembaga pendidikan dan pembinaan santri yang lahir dari kepedulian sosial untuk membentuk generasi Islam yang berakhlak mulia, mandiri, dan bermanfaat bagi masyarakat.
+        - generic [ref=e348]:
+          - heading "Navigasi" [level=2] [ref=e349]
+          - navigation [ref=e350]:
+            - link "Home" [ref=e351] [cursor=pointer]:
+              - /url: /
+            - link "Profil" [ref=e352] [cursor=pointer]:
+              - /url: /#profil
+            - link "Pendidikan" [ref=e353] [cursor=pointer]:
+              - /url: /pendidikan
+            - link "Fasilitas" [ref=e354] [cursor=pointer]:
+              - /url: /fasilitas
+            - link "Galeri" [ref=e355] [cursor=pointer]:
+              - /url: /galeri
+            - link "FAQ" [ref=e356] [cursor=pointer]:
+              - /url: /faq
+            - link "Kontak" [ref=e357] [cursor=pointer]:
+              - /url: /#kontak
+        - generic [ref=e358]:
+          - heading "Kontak" [level=2] [ref=e359]
+          - generic [ref=e360]:
+            - paragraph [ref=e361]: Liang, Maluku Tengah, Maluku
+            - paragraph [ref=e362]: Hubungi pengelola untuk jadwal kunjungan dan informasi pendaftaran.
+            - link "Buka lokasi di Google Maps" [ref=e363] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/9ZxeKutNHJodArJV6
+          - link "Hubungi Tim Pendaftaran" [ref=e364] [cursor=pointer]:
+            - /url: https://wa.me/6281234567890
+            - img
+            - text: Hubungi Tim Pendaftaran
+      - generic [ref=e365]: © 2026 Pondok Pesantren Al-Anshor Liang. All rights reserved.
+  - alert [ref=e366]

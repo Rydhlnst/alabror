@@ -1,0 +1,90 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "SahabatQu SahabatQu" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "SahabatQu" [ref=e6]
+          - paragraph [ref=e8]: SahabatQu
+        - button "Buka menu" [ref=e9]:
+          - img
+    - main [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e13]:
+          - heading "FAQ untuk keluarga yang sedang mempertimbangkan SahabatQu." [level=1] [ref=e14]
+          - paragraph [ref=e15]: Mulai dari alur pendaftaran sampai pola pembinaan boarding, semua jawaban utama dirangkum di sini.
+        - generic [ref=e18]:
+          - tablist [ref=e19]:
+            - tab "Pendaftaran" [selected] [ref=e20]:
+              - img
+              - text: Pendaftaran
+            - tab "Program" [ref=e21]:
+              - img
+              - text: Program
+            - tab "Boarding" [ref=e22]:
+              - img
+              - text: Boarding
+            - tab "Biaya" [ref=e23]:
+              - img
+              - text: Biaya
+            - tab "Lainnya" [ref=e24]:
+              - img
+              - text: Lainnya
+          - tabpanel "Pendaftaran" [ref=e25]:
+            - generic [ref=e26]:
+              - generic [ref=e28]: Pendaftaran
+              - generic [ref=e30]:
+                - heading "Bagaimana alur pendaftaran santri baru?" [level=3] [ref=e32]:
+                  - button "Bagaimana alur pendaftaran santri baru?" [ref=e33]:
+                    - text: Bagaimana alur pendaftaran santri baru?
+                    - img
+                - heading "Apa saja materi tes masuk?" [level=3] [ref=e35]:
+                  - button "Apa saja materi tes masuk?" [ref=e36]:
+                    - text: Apa saja materi tes masuk?
+                    - img
+                - heading "Apakah tersedia jalur prestasi?" [level=3] [ref=e38]:
+                  - button "Apakah tersedia jalur prestasi?" [ref=e39]:
+                    - text: Apakah tersedia jalur prestasi?
+                    - img
+                - heading "Kapan waktu terbaik untuk survey lokasi?" [level=3] [ref=e41]:
+                  - button "Kapan waktu terbaik untuk survey lokasi?" [ref=e42]:
+                    - text: Kapan waktu terbaik untuk survey lokasi?
+                    - img
+    - contentinfo [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - img "SahabatQu" [ref=e47]
+            - generic [ref=e48]:
+              - paragraph [ref=e49]: SahabatQu
+              - paragraph [ref=e50]: Qur'an, Akhlak, dan Leadership
+          - paragraph [ref=e51]: Pesantren modern yang menyiapkan generasi Qurani dengan akademik terarah, adab yang kuat, dan pembinaan kepemimpinan yang nyata.
+        - generic [ref=e52]:
+          - heading "Navigasi" [level=2] [ref=e53]
+          - navigation [ref=e54]:
+            - link "Home" [ref=e55] [cursor=pointer]:
+              - /url: /
+            - link "Profil" [ref=e56] [cursor=pointer]:
+              - /url: /#profil
+            - link "Pendidikan" [ref=e57] [cursor=pointer]:
+              - /url: /pendidikan
+            - link "Fasilitas" [ref=e58] [cursor=pointer]:
+              - /url: /fasilitas
+            - link "Galeri" [ref=e59] [cursor=pointer]:
+              - /url: /galeri
+            - link "FAQ" [ref=e60] [cursor=pointer]:
+              - /url: /faq
+            - link "Kontak" [ref=e61] [cursor=pointer]:
+              - /url: /#kontak
+        - generic [ref=e62]:
+          - heading "Kontak" [level=2] [ref=e63]
+          - generic [ref=e64]:
+            - paragraph [ref=e65]: Jl. Pendidikan SahabatQu, Liang, Maluku Tengah
+            - paragraph [ref=e66]: info@sahabatqu.id
+            - paragraph [ref=e67]: Senin - Sabtu, 08.00 - 16.00 WIT
+          - link "Hubungi Tim Pendaftaran" [ref=e68] [cursor=pointer]:
+            - /url: https://wa.me/6281234567890
+            - img
+            - text: Hubungi Tim Pendaftaran
+      - generic [ref=e69]: © 2026 Pondok Pesantren Tahfizhul Quran SahabatQu. All rights reserved.
+  - alert [ref=e70]
