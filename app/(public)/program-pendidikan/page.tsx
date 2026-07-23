@@ -38,7 +38,7 @@ export default async function ProgramPendidikanPage() {
                   <h2 className="text-2xl font-bold tracking-tight text-primary sm:text-3xl font-heading">
                     {program.name}
                   </h2>
-                  <div className="w-12 h-1 bg-primary" />
+                  <div className="w-12 h-1 bg-gray-300" />
                   <RichTextRenderer content={program.description} className="text-base leading-relaxed text-muted-foreground" />
                   <ul className="space-y-3">
                     {program.points.map((point, idx) => (

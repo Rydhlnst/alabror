@@ -40,7 +40,7 @@ export default async function ProfilPage() {
             <ScrollAnimation direction="down">
               <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl font-heading">Identitas Lembaga</h2>
             </ScrollAnimation>
-            <div className="w-12 h-1 bg-primary" />
+            <div className="w-12 h-1 bg-gray-300" />
           </div>
           <ScrollAnimation direction="up" delay={0.1}>
             <div className="overflow-hidden shadow-sm">
@@ -74,7 +74,7 @@ export default async function ProfilPage() {
             <ScrollAnimation direction="down">
               <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl font-heading">{profile.historyTitle}</h2>
             </ScrollAnimation>
-            <div className="w-12 h-1 bg-primary" />
+            <div className="w-12 h-1 bg-gray-300" />
           </div>
           <div className="max-w-4xl space-y-6">
             {profile.historyParagraphs.map((paragraph, index) => (
@@ -93,7 +93,7 @@ export default async function ProfilPage() {
             <ScrollAnimation direction="down">
               <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl font-heading">Visi & Misi</h2>
             </ScrollAnimation>
-            <div className="w-12 h-1 bg-primary" />
+            <div className="w-12 h-1 bg-gray-300" />
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
@@ -138,7 +138,7 @@ export default async function ProfilPage() {
             <ScrollAnimation direction="down">
               <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl font-heading">Struktur Pengurus</h2>
             </ScrollAnimation>
-            <div className="w-12 h-1 bg-primary" />
+            <div className="w-12 h-1 bg-gray-300" />
           </div>
           <ScrollAnimation direction="up" delay={0.1}>
             <div className="overflow-hidden shadow-sm max-w-3xl bg-white">

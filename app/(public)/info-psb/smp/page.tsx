@@ -35,7 +35,7 @@ export default async function InfoPSBSMPPage() {
               <h2 className="text-2xl font-bold tracking-tight text-primary sm:text-3xl font-heading">
                 Penerimaan Santri Baru - SMP
               </h2>
-              <div className="w-12 h-1 bg-primary" />
+              <div className="w-12 h-1 bg-gray-300" />
               <p className="text-base leading-relaxed text-muted-foreground">
                 Pondok Pesantren Al-Abror membuka pendaftaran santri baru untuk jenjang SMP
                 tahun ajaran 2026/2027. Informasi lengkap mengenai persyaratan dan alur pendaftaran dapat

@@ -37,6 +37,8 @@ export async function getHomepageSections() {
   return {
     ...defaults.defaultHomepage,
     heroImageUrl: defaults.defaultHomepage.heroImagePath,
+    faqImageUrl: defaults.defaultHomepage.faqImagePath,
+    heroStats: defaults.defaultHomepage.heroStats,
   }
 }
 
@@ -116,9 +118,18 @@ export async function getFooterSection() {
 }
 
 // Legacy exports for backward compatibility
-export async function getWhyUsItems() { return [] }
-export async function getPartnerItems() { return [] }
-export async function getHistoryTimeline() { return [] }
+export async function getWhyUsItems() {
+  return defaults.defaultWhyUsItems
+}
+export async function getPartnerItems() {
+  return defaults.defaultPartnerItems.map(item => ({
+    ...item,
+    logo: staticSiteConfig.heroImage,
+  }))
+}
+export async function getHistoryTimeline() {
+  return defaults.defaultHistoryTimeline
+}
 export async function getEditorialItems() { return [] }
 export async function getAnnouncementItems() { return [] }
 export async function getBlogItems() { return [] }
@@ -127,11 +138,28 @@ export async function getQuoteItems() { return [] }
 export async function getAgendaItems() { return [] }
 export async function getPancaJiwaItems() { return [] }
 export async function getEducationSection() {
-  return { pageTitle: "Pendidikan", pageDescription: "", highlights: [], programs: [] }
+  return defaults.defaultEducationSection
 }
 export async function getFacilitiesSection() {
-  return { pageTitle: "Fasilitas", pageDescription: "", highlights: [], items: defaults.defaultFacilityItems }
+  return {
+    pageTitle: defaults.defaultFacilitiesSection?.pageTitle || "Fasilitas",
+    pageDescription: defaults.defaultFacilitiesSection?.pageDescription || "",
+    highlights: defaults.defaultFacilitiesSection?.highlights || [],
+    items: defaults.defaultFacilityItems,
+  }
 }
-export async function getGallerySection() { return [] }
-export async function getFaqSection() { return [] }
-export async function getTestimonials() { return [] }
+export async function getGallerySection() {
+  return defaults.defaultGallerySection.items.map(item => ({
+    ...item,
+    image: item.imagePath,
+  }))
+}
+export async function getFaqSection() {
+  return defaults.defaultFaqSection.categories
+}
+export async function getTestimonials() {
+  return defaults.defaultTestimonialsSection.items.map(item => ({
+    ...item,
+    avatar: item.avatarPath,
+  }))
+}

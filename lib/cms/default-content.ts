@@ -69,6 +69,29 @@ export const defaultHomepage = {
   ctaDescription: richTextParagraph("Hubungi kami untuk informasi pendaftaran santri baru"),
   ctaLabel: "Hubungi via WhatsApp",
   ctaHref: siteConfig.whatsapp,
+  // Legacy fields for schema compatibility
+  partnersTitle: "Program Unggulan",
+  partnersDescription: richTextParagraph("Program pendidikan unggulan Pondok Pesantren Al-Abror"),
+  historyTitle: "Sejarah Pesantren",
+  historyDescription: richTextParagraph("Sejarah berdirinya Pondok Pesantren Al-Abror Halmahera Timur"),
+  whyUsTitle: "Mengapa Al-Abror?",
+  whyUsDescription: richTextParagraph("Alasan memilih Pondok Pesantren Al-Abror"),
+  educationTitle: "Program Pendidikan",
+  educationDescription: richTextParagraph("Program pendidikan terpadu antara kurikulum pesantren dan pendidikan formal"),
+  faqTitle: "Pertanyaan Umum",
+  faqDescription: richTextParagraph("Informasi yang mungkin Anda butuhkan"),
+  faqImagePath: "/foto1.jpg",
+  testimonialsTitle: "Testimoni",
+  testimonialsDescription: richTextParagraph("Testimoni dari wali santri dan alumni"),
+  bottomCtaTitle: "Pendaftaran Santri Baru",
+  bottomCtaDescription: richTextParagraph("Hubungi kami untuk informasi pendaftaran santri baru"),
+  bottomCtaLabel: "Hubungi via WhatsApp",
+  bottomCtaHref: siteConfig.whatsapp,
+  heroStats: [
+    { value: "2011", label: "Tahun Berdiri" },
+    { value: "Formal", label: "dan Diniyah" },
+    { value: "MI & SMP", label: "Jenjang Pendidikan" },
+  ],
 }
 
 export const defaultNavigation = mainNav.map((item, index) => ({
@@ -109,6 +132,7 @@ export const defaultFacilityItems = facilityItems.map((item, index) => ({
   description: richTextParagraph(item.description),
   imagePath: item.image,
   href: item.href,
+  iconKey: ["building-2", "book-open", "landmark", "book-text"][index] ?? "sparkles",
   sortOrder: index,
 }))
 
@@ -143,6 +167,88 @@ export const defaultStrukturPengurusItems = strukturPengurusItems.map((item, ind
   sortOrder: index,
 }))
 
+export const defaultPartnerItems = [
+  { name: "Pendidikan Formal", note: "MI & SMP", sortOrder: 0 },
+  { name: "Pendidikan Diniyah", note: "Kurikulum Pesantren", sortOrder: 1 },
+  { name: "Tahfidz Al-Qur'an", note: "Program Unggulan", sortOrder: 2 },
+  { name: "Bahasa Arab", note: "Keterampilan Bahasa", sortOrder: 3 },
+]
+
+export const defaultWhyUsItems = [
+  { title: "Pendidikan Terpadu", description: richTextParagraph("Mengintegrasikan kurikulum pesantren dan pendidikan formal"), iconKey: "book-open", sortOrder: 0 },
+  { title: "Tahfidz Al-Qur'an", description: richTextParagraph("Program hafalan Al-Qur'an yang terstruktur"), iconKey: "book-quran", sortOrder: 1 },
+  { title: "Bahasa Arab", description: richTextParagraph("Pembekalian keterampilan bahasa Arab"), iconKey: "language", sortOrder: 2 },
+  { title: "Akhlak Karimah", description: richTextParagraph("Penanaman nilai-nilai akhlak mulia"), iconKey: "shield-heart", sortOrder: 3 },
+]
+
+export const defaultEducationSection = {
+  pageTitle: "Program Pendidikan",
+  pageDescription: richTextParagraph("Program pendidikan terpadu antara kurikulum pesantren dan pendidikan formal"),
+  highlights: [
+    { body: richTextParagraph("Kurikulum Kemenag RI"), sortOrder: 0 },
+    { body: richTextParagraph("Pendidikan Al-Qur'an & Tahfidz"), sortOrder: 1 },
+    { body: richTextParagraph("Bahasa Arab & Inggris"), sortOrder: 2 },
+  ],
+  programs: defaultProgramPendidikanItems.map((item, index) => ({
+    name: item.name,
+    summary: item.description,
+    focus: richTextParagraph("Fokus pada pembentukan karakter dan hafalan Al-Qur'an"),
+    imagePath: item.imagePath,
+    iconKey: "school",
+    homePrimaryLabel: "Lihat Detail",
+    homePrimaryHref: "/program-pendidikan",
+    homeSecondaryLabel: "",
+    homeSecondaryHref: "",
+    sortOrder: index,
+    points: item.points,
+  })),
+}
+
+export const defaultHistoryTimeline = [
+  { year: "2011", title: "Pendirian Pesantren", description: richTextParagraph("Pondok Pesantren Al-Abror resmi didirikan"), color: "bg-primary", sortOrder: 0 },
+  { year: "2021", title: "NSP Terbit", description: richTextParagraph("Nomor Statistik Pesantren terbit"), color: "bg-accent-green", sortOrder: 1 },
+  { year: "Sekarang", title: "Pengembangan", description: richTextParagraph("Terus berkembang menjadi lembaga pendidikan terpercaya"), color: "bg-emerald-600", sortOrder: 2 },
+]
+
+export const defaultTestimonialsSection = {
+  items: [
+    { name: "Wali Santri", role: "Orang Tua Santri", quote: richTextParagraph("Alhamdulillah, anak saya mengalami perkembangan yang sangat baik di Pesantren Al-Abror"), avatarPath: "", published: true, sortOrder: 0 },
+  ],
+}
+
+export const defaultFaqSection = {
+  pageTitle: "Pertanyaan Umum",
+  pageDescription: richTextParagraph("Informasi yang mungkin Anda butuhkan"),
+  categories: [
+    {
+      name: "Pendaftaran",
+      iconKey: "clipboard-list",
+      sortOrder: 0,
+      items: [
+        { question: "Bagaimana cara mendaftar?", answer: richTextParagraph("Hubungi kami via WhatsApp atau datang langsung ke pesantren"), sortOrder: 0 },
+        { question: "Kapan pendaftaran dibuka?", answer: richTextParagraph("Pendaftaran dibuka setiap tahun ajaran baru"), sortOrder: 1 },
+      ],
+    },
+  ],
+}
+
+export const defaultGallerySection = {
+  pageTitle: "Galeri Kegiatan",
+  pageDescription: richTextParagraph("Dokumentasi kegiatan Pondok Pesantren Al-Abror"),
+  items: defaultGalleryItems,
+}
+
+export const defaultFacilitiesSection = {
+  pageTitle: "Fasilitas",
+  pageDescription: richTextParagraph("Fasilitas yang tersedia di Pondok Pesantren Al-Abror"),
+  highlights: [
+    { body: richTextParagraph("Fasilitas lengkap dan representatif"), sortOrder: 0 },
+    { body: richTextParagraph("Lingkungan pesantren yang nyaman"), sortOrder: 1 },
+    { body: richTextParagraph("Sarana pendukung pendidikan yang memadai"), sortOrder: 2 },
+  ],
+  items: defaultFacilityItems,
+}
+
 export const defaultProfileSection = {
   pageTitle: "Profil Pesantren",
   pageDescription: richTextParagraph("Mengenal lebih dekat Pondok Pesantren Al-Abror Halmahera Timur."),
@@ -170,6 +276,18 @@ export const defaultProfileSection = {
     name: item.nama,
     sortOrder: index,
   })),
+  goalItems: [
+    "Mencetak generasi Muslim yang bertauhid dan berilmu.",
+    "Membentuk santri yang beradab dan Islami.",
+    "Membekali santri dengan keterampilan Bahasa Arab dan hafalan Al-Qur'an.",
+    "Mewujudkan generasi cinta Al-Qur'an.",
+  ].map((body, index) => ({ body: richTextParagraph(body), sortOrder: index })),
+  programRows: [
+    ["Pendidikan Formal", "school"],
+    ["Pendidikan Diniyah", "book-open"],
+    ["Tahfidz Al-Qur'an", "book-quran"],
+    ["Bahasa Arab", "language"],
+  ].map(([name, iconKey], index) => ({ name, iconKey, sortOrder: index })),
 }
 
 export const defaultContactSection = {
