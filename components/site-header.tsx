@@ -6,6 +6,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, ChevronDown } from "lucide-react"
 import { FaWhatsapp, FaEnvelope, FaPhone, FaFacebookF, FaInstagram } from "react-icons/fa6"
+import { defaultPsbConfig } from "@/lib/cms/default-content"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -88,6 +89,7 @@ function NavDropdown({ item, pathname }: { item: { label: string; href: string; 
 export function SiteHeader({
   siteConfig = staticSiteConfig,
   mainNav = staticMainNav,
+  psbConfig = defaultPsbConfig,
 }: {
   siteConfig?: {
     name?: string
@@ -107,6 +109,12 @@ export function SiteHeader({
     href: string
     children?: { label: string; href: string }[]
   }[]
+  psbConfig?: {
+    isOpen: boolean
+    tahunAjaran: string
+    infoLink: string
+    daftarLink: string
+  }
 }) {
   const pathname = usePathname()
 
@@ -196,6 +204,13 @@ export function SiteHeader({
 
           {/* Desktop CTA & Mobile Menu */}
           <div className="flex items-center gap-3">
+            {psbConfig.isOpen && (
+              <Button size="sm" className="hidden lg:flex bg-gray-900 text-white hover:bg-gray-800 rounded-none px-5 py-2.5 text-sm font-medium" asChild>
+                <a href={psbConfig.daftarLink} target="_blank" rel="noopener noreferrer">
+                  Daftar {psbConfig.tahunAjaran}
+                </a>
+              </Button>
+            )}
             <Button size="sm" className="hidden lg:flex bg-primary text-white hover:bg-primary/90 rounded-none px-5 py-2.5 text-sm font-medium" asChild>
               <a href={waHref} target="_blank" rel="noopener noreferrer">
                 <FaWhatsapp className="size-4 mr-2" />

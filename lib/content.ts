@@ -86,6 +86,13 @@ export const siteConfig = {
   focusPendidikan: "Formal dan Diniyah",
 };
 
+export const psbConfig = {
+  isOpen: true,
+  tahunAjaran: "2026/2027",
+  infoLink: "/info-psb/mi",
+  daftarLink: "http://santri.darul-muttaqien.com",
+};
+
 export const mainNav: NavItem[] = [
   { label: "Beranda", href: "/" },
   { label: "Profil", href: "/profil" },
@@ -105,83 +112,9 @@ export const mainNav: NavItem[] = [
   { label: "Kontak", href: "/kontak" },
 ];
 
-export const newsItems: NewsItem[] = [
-  {
-    title: "Penerimaan Santri Baru Tahun Ajaran 2026/2027",
-    date: "Januari 2026",
-    summary: "Pondok Pesantren Al-Abror membuka pendaftaran santri baru untuk jenjang MI dan SMP tahun ajaran 2026/2027.",
-    href: "#",
-    image: "/foto1.jpg",
-    category: "PSB",
-  },
-  {
-    title: "Kegiatan Peringatan Maulid Nabi Muhammad SAW 1447 H",
-    date: "Rabiul Awal 1447 H",
-    summary: "Santri dan pengurus Pondok Pesantren Al-Abror mengadakan peringatan Maulid Nabi Muhammad SAW dengan penuh khidmat.",
-    href: "#",
-    image: "/foto2.jpg",
-    category: "Kegiatan",
-  },
-  {
-    title: "Wisuda Tahfidz Al-Qur'an Angkatan Ke-5",
-    date: "Desember 2025",
-    summary: "Pondok Pesantren Al-Abror menyelenggarakan wisuda tahfidz Al-Qur'an untuk angkatan ke-5 dengan penuh suka cita.",
-    href: "#",
-    image: "/foto1.jpg",
-    category: "Akademik",
-  },
-  {
-    title: "Santri Al-Abror Juara Lomba Tahfidz Tingkat Kabupaten",
-    date: "November 2025",
-    summary: "Santri Pondok Pesantren Al-Abror meraih juara dalam lomba tahfidz Al-Qur'an tingkat kabupaten Halmahera Timur.",
-    href: "#",
-    image: "/foto2.jpg",
-    category: "Prestasi",
-  },
-  {
-    title: "Kegiatan Bakti Sosial di Desa Soagimalaha",
-    date: "Oktober 2025",
-    summary: "Santri dan pengurus Pondok Pesantren Al-Abror mengadakan kegiatan bakti sosial di Desa Soagimalaha.",
-    href: "#",
-    image: "/foto1.jpg",
-    category: "Kegiatan",
-  },
-  {
-    title: "Peringatan Hari Santri Nasional 2025",
-    date: "Oktober 2025",
-    summary: "Pondok Pesantren Al-Abror memperingati Hari Santri Nasional dengan berbagai kegiatan positif.",
-    href: "#",
-    image: "/foto2.jpg",
-    category: "Kegiatan",
-  },
-];
+export const newsItems: NewsItem[] = [];
 
-export const articleItems: ArticleItem[] = [
-  {
-    title: "Keutamaan Mempelajari Al-Qur'an di Usia Muda",
-    date: "Januari 2026",
-    summary: "Al-Qur'an adalah pedoman hidup umat Islam. Mempelajarinya sejak usia muda akan memberikan keberkahan yang luar biasa.",
-    href: "#",
-    image: "/foto1.jpg",
-    category: "Artikel",
-  },
-  {
-    title: "Pentingnya Adab dalam Pendidikan Islam",
-    date: "Desember 2025",
-    summary: "Adab adalah pondasi utama dalam pendidikan Islam. Seorang santri diajarkan untuk mengutamakan adab sebelum ilmu.",
-    href: "#",
-    image: "/foto2.jpg",
-    category: "Artikel",
-  },
-  {
-    title: "Peran Pesantren dalam Membentuk Karakter Generasi Muda",
-    date: "November 2025",
-    summary: "Pesantren memiliki peran penting dalam membentuk karakter generasi muda yang beriman dan bertakwa.",
-    href: "#",
-    image: "/foto1.jpg",
-    category: "Artikel",
-  },
-];
+export const articleItems: ArticleItem[] = [];
 
 export const facilityItems: Facility[] = [
   {
@@ -222,32 +155,7 @@ export const galleryItems: GalleryItem[] = [
   { src: "/foto1.jpg", alt: "Lingkungan Pesantren", aspect: "16/9" },
 ];
 
-export const teacherItems: TeacherItem[] = [
-  {
-    name: "Ust. Ahmad",
-    role: "Pimpinan Pesantren",
-    image: "/foto1.jpg",
-    href: "#",
-  },
-  {
-    name: "Ust. Muhammad",
-    role: "Wakil Pimpinan",
-    image: "/foto2.jpg",
-    href: "#",
-  },
-  {
-    name: "Ustzh. Fatimah",
-    role: "Kepala Madrasah",
-    image: "/foto1.jpg",
-    href: "#",
-  },
-  {
-    name: "Ust. Abdullah",
-    role: "Kepala Asrama",
-    image: "/foto2.jpg",
-    href: "#",
-  },
-];
+export const teacherItems: TeacherItem[] = [];
 
 export const visionItems = [
   "Mencetak Generasi Muslim/Muslimah yang bertauhid",
@@ -287,12 +195,4 @@ export const programPendidikanItems = [
   },
 ];
 
-export const strukturPengurusItems = [
-  { jabatan: "Pimpinan Pesantren", nama: "Ust. Ahmad" },
-  { jabatan: "Wakil Pimpinan", nama: "Ust. Muhammad" },
-  { jabatan: "Kepala Madrasah Ibtidaiyah", nama: "Ustzh. Fatimah" },
-  { jabatan: "Kepala SMP", nama: "Ust. Ibrahim" },
-  { jabatan: "Kepala Asrama", nama: "Ust. Abdullah" },
-  { jabatan: "Bendahara", nama: "Ustzh. Khadijah" },
-  { jabatan: "Sekretaris", nama: "Ust. Umar" },
-];
+export const strukturPengurusItems: { jabatan: string; nama: string }[] = [];

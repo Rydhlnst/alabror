@@ -42,6 +42,10 @@ export async function getHomepageSections() {
   }
 }
 
+export async function getPsbConfig() {
+  return defaults.defaultPsbConfig
+}
+
 export async function getNewsItems() {
   return defaults.defaultNewsItems.map(item => ({
     ...item,

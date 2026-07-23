@@ -8,6 +8,7 @@ import {
   galleryItems,
   programPendidikanItems,
   strukturPengurusItems,
+  psbConfig,
   visionItems,
   missionItems,
 } from "@/lib/content"
@@ -93,6 +94,8 @@ export const defaultHomepage = {
     { value: "MI & SMP", label: "Jenjang Pendidikan" },
   ],
 }
+
+export const defaultPsbConfig = psbConfig
 
 export const defaultNavigation = mainNav.map((item, index) => ({
   ...item,

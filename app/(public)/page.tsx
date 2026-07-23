@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowRight, FaWhatsapp } from "react-icons/fa6";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,6 +16,7 @@ import {
   getFacilityItems,
   getTeacherItems,
   getProgramPendidikanItems,
+  getPsbConfig,
 } from "@/lib/db/queries";
 
 export default async function Home() {
@@ -26,13 +27,16 @@ export default async function Home() {
   const facilities = await getFacilityItems();
   const teachers = await getTeacherItems();
   const programs = await getProgramPendidikanItems();
+  const psb = await getPsbConfig();
+
+  const waHref = siteConfig.whatsapp.startsWith("http") ? siteConfig.whatsapp : `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}`;
 
   const carouselSlides = [
     {
       image: "/foto1.jpg",
       title: siteConfig.name,
       description: typeof siteConfig.description === 'string' ? siteConfig.description : siteConfig.shortName + " - " + siteConfig.tagline,
-      primaryCta: { label: "Info PSB", href: "/info-psb/mi" },
+      primaryCta: psb.isOpen ? { label: `Daftar ${psb.tahunAjaran}`, href: psb.daftarLink } : { label: "Info PSB", href: psb.infoLink },
       secondaryCta: { label: "Profil Pesantren", href: "/profil" },
     },
     {
@@ -43,9 +47,9 @@ export default async function Home() {
     },
     {
       image: "/foto1.jpg",
-      title: "Pendaftaran Santri Baru",
-      description: "Buka pendaftaran untuk jenjang MI dan SMP tahun ajaran 2026/2027. Hubungi kami untuk informasi lebih lanjut.",
-      primaryCta: { label: "Daftar Sekarang", href: "/info-psb/mi" },
+      title: psb.isOpen ? `Pendaftaran Santri Baru ${psb.tahunAjaran}` : "Pondok Pesantren Al-Abror",
+      description: psb.isOpen ? "Hubungi kami untuk informasi pendaftaran santri baru." : "Mencetak Generasi Muslim yang Bertauhid, Berilmu, Beradab, dan Islami.",
+      primaryCta: psb.isOpen ? { label: "Daftar Sekarang", href: psb.daftarLink } : { label: "Hubungi Kami", href: waHref },
     },
   ];
 
@@ -329,6 +333,18 @@ export default async function Home() {
           </ScrollAnimation>
         </div>
       </section>
+
+      {/* Floating Daftar Button - PSB Open */}
+      {psb.isOpen && (
+        <a
+          href={psb.daftarLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 left-6 z-50 flex items-center gap-2 bg-primary text-white px-5 py-3 shadow-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 active:scale-95"
+        >
+          <span className="text-sm font-bold">Daftar {psb.tahunAjaran}</span>
+        </a>
+      )}
     </div>
   );
 }
