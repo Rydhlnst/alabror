@@ -167,7 +167,7 @@ export function SiteHeader({
               alt={siteConfig.shortName}
               width={56}
               height={56}
-              className="size-12 sm:size-14 object-contain"
+              className="size-12 sm:size-14 object-contain brightness-110 contrast-105"
             />
             <div>
               <p className="font-heading text-base sm:text-lg font-bold text-gray-900 tracking-tight leading-tight">
@@ -229,7 +229,7 @@ export function SiteHeader({
                 <SheetContent side="right" showCloseButton={false} className="w-full max-w-[300px] bg-white rounded-none p-0 flex flex-col">
                   <div className="flex items-center justify-between p-4 border-b border-gray-100">
                     <div className="flex items-center gap-2">
-                      <Image src={siteConfig.logo} alt={siteConfig.shortName} width={36} height={36} className="size-9 object-contain" />
+                      <Image src={siteConfig.logo} alt={siteConfig.shortName} width={36} height={36} className="size-9 object-contain brightness-110 contrast-105" />
                       <p className="font-heading text-sm font-bold text-gray-900">{siteConfig.shortName}</p>
                     </div>
                     <SheetClose asChild>

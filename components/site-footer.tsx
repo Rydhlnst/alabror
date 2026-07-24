@@ -51,7 +51,7 @@ export async function SiteFooter() {
                 alt={siteConfig.shortName}
                 width={56}
                 height={56}
-                className="size-12 object-contain bg-white rounded p-1"
+                className="size-12 object-contain bg-white rounded p-1 brightness-110 contrast-105"
               />
               <div>
                 <h3 className="text-base font-bold text-white leading-tight">{siteConfig.shortName}</h3>
