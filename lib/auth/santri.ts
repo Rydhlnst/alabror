@@ -7,7 +7,7 @@ import { redirect } from "next/navigation"
 import { eq } from "drizzle-orm"
 import { getDb, schema } from "@/lib/db"
 
-const SESSION_COOKIE = "ponpes_santri_session"
+const SESSION_COOKIE = "al-abror_santri_session"
 const SESSION_DURATION = 60 * 60 * 24 * 7
 
 function getSecret() {

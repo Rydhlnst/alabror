@@ -3,7 +3,7 @@ import "server-only"
 import { SignJWT, jwtVerify } from "jose"
 import { cookies } from "next/headers"
 
-const SESSION_COOKIE = "ponpes_admin_session"
+const SESSION_COOKIE = "al-abror_admin_session"
 const SESSION_DURATION = 60 * 60 * 24 * 7
 
 function getSecret() {

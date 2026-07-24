@@ -25,7 +25,7 @@ export default async function KontakPage() {
   const emailVal = emailMethod?.value || siteConfig.email
 
   const loc = contact.locations[0]
-  const mapEmbedUrl = loc?.mapEmbedUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.5!2d106.7!3d-6.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjQnMDAuMCJTIDEwNsKwNDInMDAuMCJF!5e0!3m2!1sid!2sid!4v1"
+  const mapEmbedUrl = loc?.mapEmbedUrl || "https://maps.google.com/maps?q=Pondok+Pesantren+Al-Abror+Yayasan+Hidayatullah+Halmahera+Timur&t=&z=15&ie=UTF8&iwloc=&output=embed"
 
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {

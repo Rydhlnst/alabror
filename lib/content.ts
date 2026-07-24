@@ -70,7 +70,7 @@ export const siteConfig = {
   whatsapp: "https://wa.me/6285290872062",
   whatsappLabel: "Hubungi Kami",
   brochureHref: "#",
-  mapHref: "https://www.google.com/maps/place/Pondok+Pesantren+Al-Abror+Yayasan+Hidayatullah+Halmahera+Timur/",
+  mapHref: "https://www.google.com/maps/place/Pondok+Pesantren+Al-Abror+Yayasan+Hidayatullah+Halmahera+Timur,+Jl+siswa+No.3,+Soa+Gimalaha,+Kec.+Kota+Maba,+Kabupaten+Halmahera+Timur,+Maluku+Utara/data=!4m2!3m1!1s0x329c41d09052a5ed:0x914d6ba3c8b1246b?utm_source=mstt_1&entry=gps&coh=192189",
   logo: "/logo.png",
   heroImage: "/foto1.jpg",
   address: "Jl. Goloipopo, Desa Soagimalaha, RT. 003 RW. 001, Kec. Kota Maba, Kab. Halmahera Timur, Maluku Utara",
