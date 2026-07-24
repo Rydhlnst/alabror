@@ -30,7 +30,7 @@ export function AdminSidebar() {
                 </span>
                 <span className="flex flex-col gap-0.5">
                   <span className="font-semibold">Ponpes CMS</span>
-                  <span className="text-xs text-muted-foreground">As Salam Metro</span>
+                  <span className="text-xs text-muted-foreground">Al-Abror</span>
                 </span>
               </Link>
             </SidebarMenuButton>

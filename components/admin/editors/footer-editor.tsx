@@ -78,7 +78,7 @@ export function FooterEditor({ footer }: FooterEditorProps) {
                 id="copyrightText"
                 name="copyrightText"
                 defaultValue={footer.copyrightText}
-                placeholder="Contoh: © 2026 Pondok Pesantren As Salam Metro. Hak Cipta Dilindungi."
+                placeholder="Contoh: © 2026 Pondok Pesantren Al-Abror. Hak Cipta Dilindungi."
                 required
               />
             </div>

@@ -461,7 +461,7 @@ export default async function AdminSectionPage({
         <CollectionManager
           slug="why-choose-us"
           title="Keunggulan Pesantren (Why Choose Us)"
-          description="Butir keunggulan fasilitas, kurikulum, dan pengasuhan di As Salam Metro."
+          description="Butir keunggulan fasilitas, kurikulum, dan pengasuhan di Al-Abror."
           items={items}
           columns={[
             { label: "Judul Keunggulan", key: "title" },
