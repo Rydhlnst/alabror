@@ -338,8 +338,6 @@ export default async function Home() {
       {psb.isOpen && (
         <a
           href={psb.daftarLink}
-          target="_blank"
-          rel="noopener noreferrer"
           className="fixed bottom-6 left-6 z-50 flex items-center gap-2 bg-primary text-white px-5 py-3 shadow-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 active:scale-95"
         >
           <span className="text-sm font-bold">Daftar {psb.tahunAjaran}</span>

@@ -90,7 +90,7 @@ export const psbConfig = {
   isOpen: true,
   tahunAjaran: "2026/2027",
   infoLink: "/info-psb/mi",
-  daftarLink: "https://wa.me/6285290872062",
+  daftarLink: "/register",
 };
 
 export const mainNav: NavItem[] = [

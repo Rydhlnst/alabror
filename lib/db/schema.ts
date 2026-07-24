@@ -358,3 +358,29 @@ export const contactLocations = pgTable("contact_locations", {
   createdAt,
   updatedAt,
 })
+
+export const santriUsers = pgTable("santri_users", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  email: text("email").notNull().unique(),
+  passwordHash: text("password_hash").notNull(),
+  name: text("name").notNull(),
+  phone: text("phone"),
+  createdAt,
+  updatedAt,
+})
+
+export const santriRegistrations = pgTable("santri_registrations", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id").notNull().references(() => santriUsers.id, { onDelete: "cascade" }),
+  jenjang: text("jenjang").notNull(),
+  namaLengkap: text("nama_lengkap").notNull(),
+  tempatLahir: text("tempat_lahir").notNull(),
+  tanggalLahir: text("tanggal_lahir").notNull(),
+  jenisKelamin: text("jenis_kelamin").notNull(),
+  alamat: text("alamat").notNull(),
+  namaOrtu: text("nama_ortu").notNull(),
+  teleponOrtu: text("telepon_ortu").notNull(),
+  status: text("status").notNull().default("pending"),
+  createdAt,
+  updatedAt,
+})

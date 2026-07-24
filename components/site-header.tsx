@@ -165,9 +165,10 @@ export function SiteHeader({
             <Image
               src={siteConfig.logo}
               alt={siteConfig.shortName}
-              width={56}
-              height={56}
-              className="size-12 sm:size-14 object-contain brightness-110 contrast-105"
+              width={64}
+              height={64}
+              className="size-14 sm:size-16 object-contain"
+              priority
             />
             <div>
               <p className="font-heading text-base sm:text-lg font-bold text-gray-900 tracking-tight leading-tight">
@@ -206,7 +207,7 @@ export function SiteHeader({
           <div className="flex items-center gap-3">
             {psbConfig.isOpen && (
               <Button size="sm" className="hidden lg:flex bg-gray-900 text-white hover:bg-gray-800 rounded-none px-5 py-2.5 text-sm font-medium" asChild>
-                <a href={psbConfig.daftarLink} target="_blank" rel="noopener noreferrer">
+                <a href={psbConfig.daftarLink}>
                   Daftar {psbConfig.tahunAjaran}
                 </a>
               </Button>
