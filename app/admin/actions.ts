@@ -209,35 +209,44 @@ export async function uploadMediaAction(formData: FormData) {
     throw new Error("No file uploaded")
   }
 
-  const bytes = await file.arrayBuffer()
-  const buffer = Buffer.from(bytes)
+  console.log(`[uploadMediaAction] file: ${file.name}, type: ${file.type}, size: ${file.size}`)
 
-  // Upload to R2 (with WebP compression fallback to disk)
-  const { url, storageKey } = await uploadAsset(buffer, file.name, file.type)
+  try {
+    const bytes = await file.arrayBuffer()
+    const buffer = Buffer.from(bytes)
 
-  const db = getDb()
-  if (!db) throw new Error("DB not initialized")
+    // Upload to R2 (with WebP compression fallback to disk)
+    const { url, storageKey } = await uploadAsset(buffer, file.name, file.type)
+    console.log(`[uploadMediaAction] uploaded: ${url}`)
 
-  const isImage = file.type.startsWith("image/")
-  const finalMime = isImage && file.type !== "image/svg+xml" && file.type !== "image/gif"
-    ? "image/webp"
-    : file.type
+    const db = getDb()
+    if (!db) throw new Error("DB not initialized")
 
-  const [inserted] = await db
-    .insert(schema.mediaAssets)
-    .values({
-      label: file.name,
-      alt: file.name,
-      kind: "image",
-      storageKey,
-      url,
-      mimeType: finalMime,
-      size: buffer.length,
-    })
-    .returning()
+    const isImage = file.type.startsWith("image/")
+    const finalMime = isImage && file.type !== "image/svg+xml" && file.type !== "image/gif"
+      ? "image/webp"
+      : file.type
 
-  revalidatePath("/admin/media-library")
-  return inserted
+    const [inserted] = await db
+      .insert(schema.mediaAssets)
+      .values({
+        label: file.name,
+        alt: file.name,
+        kind: "image",
+        storageKey,
+        url,
+        mimeType: finalMime,
+        size: buffer.length,
+      })
+      .returning()
+
+    console.log(`[uploadMediaAction] saved to DB: ${inserted.id}`)
+    revalidatePath("/admin/media-library")
+    return inserted
+  } catch (err) {
+    console.error("[uploadMediaAction] FAILED:", err)
+    throw err
+  }
 }
 
 export async function deleteMediaAction(id: string) {

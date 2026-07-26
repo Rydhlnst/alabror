@@ -1,7 +1,7 @@
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3"
 import sharp from "sharp"
 import { join } from "path"
-import { writeFileSync, unlinkSync, existsSync } from "fs"
+import { writeFileSync, unlinkSync, existsSync, mkdirSync } from "fs"
 
 const hasR2Env = !!(
   process.env.R2_ACCOUNT_ID &&
@@ -77,25 +77,32 @@ export async function uploadAsset(
 
   // 2. Upload to Cloudflare R2 if configured
   if (r2Client && hasR2Env) {
-    const bucketName = process.env.R2_BUCKET_NAME || ""
-    const publicUrl = process.env.R2_PUBLIC_URL || ""
+    try {
+      const bucketName = process.env.R2_BUCKET_NAME || ""
+      const publicUrl = process.env.R2_PUBLIC_URL || ""
 
-    await r2Client.send(
-      new PutObjectCommand({
-        Bucket: bucketName,
-        Key: storageKey,
-        Body: processedBuffer,
-        ContentType: processedMime,
-      })
-    )
+      await r2Client.send(
+        new PutObjectCommand({
+          Bucket: bucketName,
+          Key: storageKey,
+          Body: processedBuffer,
+          ContentType: processedMime,
+        })
+      )
 
-    const url = `${publicUrl.replace(/\/$/, "")}/${storageKey}`
-    return { url, storageKey }
+      const url = `${publicUrl.replace(/\/$/, "")}/${storageKey}`
+      return { url, storageKey }
+    } catch (r2Error) {
+      console.error("R2 upload failed, falling back to local disk:", r2Error)
+    }
   }
 
   // 3. Fallback to local disk storage
-  console.warn("Cloudflare R2 is not configured. Falling back to local disk storage.")
+  console.warn("Cloudflare R2 is not configured or upload failed. Falling back to local disk storage.")
   const uploadDir = join(process.cwd(), "public", "uploads")
+  if (!existsSync(uploadDir)) {
+    mkdirSync(uploadDir, { recursive: true })
+  }
   const filePath = join(uploadDir, storageKey)
   
   writeFileSync(filePath, processedBuffer)
@@ -112,14 +119,18 @@ export async function uploadAsset(
 export async function deleteAsset(storageKey: string): Promise<void> {
   // 1. Delete from Cloudflare R2 if configured
   if (r2Client && hasR2Env) {
-    const bucketName = process.env.R2_BUCKET_NAME || ""
-    await r2Client.send(
-      new DeleteObjectCommand({
-        Bucket: bucketName,
-        Key: storageKey,
-      })
-    )
-    return
+    try {
+      const bucketName = process.env.R2_BUCKET_NAME || ""
+      await r2Client.send(
+        new DeleteObjectCommand({
+          Bucket: bucketName,
+          Key: storageKey,
+        })
+      )
+      return
+    } catch (r2Error) {
+      console.error("R2 delete failed, falling back to local disk:", r2Error)
+    }
   }
 
   // 2. Fallback to local disk storage
