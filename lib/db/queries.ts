@@ -6,6 +6,8 @@ import * as schema from "./schema"
 import * as defaults from "../cms/default-content"
 import { siteConfig as staticSiteConfig } from "../content"
 
+const R2_PUBLIC_URL = process.env.R2_PUBLIC_URL || ""
+
 const staticSiteSettings = {
   ...staticSiteConfig,
   description: defaults.defaultSiteSettings.description,
@@ -24,6 +26,14 @@ async function resolveMediaUrl(db: DbClient, mediaId: string | null | undefined)
   if (!mediaId) return null
   const [media] = await db.select().from(schema.mediaAssets).where(eq(schema.mediaAssets.id, mediaId)).limit(1)
   return media?.url ?? null
+}
+
+function fallbackR2(path: string): string {
+  if (R2_PUBLIC_URL && path.startsWith("/")) {
+    const baseName = path.replace(/^\//, "").replace(/\.[^.]+$/, "")
+    return `${R2_PUBLIC_URL.replace(/\/$/, "")}/${baseName}.webp`
+  }
+  return path
 }
 
 export async function getSiteSettings() {
@@ -188,7 +198,7 @@ export async function getNewsItems() {
         category: item.category || "",
         summary: item.summary,
         href: item.href,
-        cover: cover || "/foto1.jpg",
+        cover: cover || fallbackR2("/foto1.jpg"),
         published: item.published,
         sortOrder: item.sortOrder,
       }
@@ -214,7 +224,7 @@ export async function getArticleItems() {
         category: item.category || "",
         summary: item.summary,
         href: item.href,
-        cover: cover || "/foto1.jpg",
+        cover: cover || fallbackR2("/foto1.jpg"),
         published: item.published,
         sortOrder: item.sortOrder,
       }
@@ -237,7 +247,7 @@ export async function getFacilityItems() {
       return {
         name: item.name,
         description: item.description,
-        imagePath: image || "/foto1.jpg",
+        imagePath: image || fallbackR2("/foto1.jpg"),
         href: "#",
         iconKey: item.iconKey,
         sortOrder: item.sortOrder,
@@ -263,7 +273,7 @@ export async function getGalleryItems() {
     return Promise.all(items.map(async item => {
       const image = await resolveMediaUrl(db, item.imageMediaId)
       return {
-        image: image || "/foto1.jpg",
+        image: image || fallbackR2("/foto1.jpg"),
         alt: item.alt,
         caption: item.caption,
         aspect: item.aspect,
@@ -291,7 +301,7 @@ export async function getProgramPendidikanItems() {
       return {
         name: program.name,
         description: program.summary,
-        imagePath: image || "/foto1.jpg",
+        imagePath: image || fallbackR2("/foto1.jpg"),
         points: points.map(p => ({ body: p.body, sortOrder: p.sortOrder })),
         sortOrder: program.sortOrder,
       }

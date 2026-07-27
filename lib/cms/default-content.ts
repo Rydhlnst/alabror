@@ -14,9 +14,11 @@ import {
 } from "@/lib/content"
 import { richTextParagraph } from "@/lib/cms/rich-text"
 
+const R2_PUBLIC_URL = process.env.R2_PUBLIC_URL || ""
+
 export const defaultMediaAssets = [
-  { label: "Primary Logo", url: "/logo.png", storageKey: "/logo.png", kind: "image", alt: siteConfig.shortName },
-  { label: "Hero Image", url: siteConfig.heroImage, storageKey: siteConfig.heroImage, kind: "image", alt: siteConfig.name },
+  { label: "Primary Logo", url: R2_PUBLIC_URL ? `${R2_PUBLIC_URL.replace(/\/$/, "")}/logo.webp` : "/logo.png", storageKey: "logo.webp", kind: "image", alt: siteConfig.shortName },
+  { label: "Hero Image", url: R2_PUBLIC_URL ? `${R2_PUBLIC_URL.replace(/\/$/, "")}/foto1.webp` : siteConfig.heroImage, storageKey: "foto1.webp", kind: "image", alt: siteConfig.name },
 ]
 
 export const defaultSiteSettings = {
@@ -81,7 +83,7 @@ export const defaultHomepage = {
   educationDescription: richTextParagraph("Program pendidikan terpadu antara kurikulum pesantren dan pendidikan formal"),
   faqTitle: "Pertanyaan Umum",
   faqDescription: richTextParagraph("Informasi yang mungkin Anda butuhkan"),
-  faqImagePath: "/foto1.jpg",
+  faqImagePath: R2_PUBLIC_URL ? `${R2_PUBLIC_URL.replace(/\/$/, "")}/foto1.webp` : "/foto1.jpg",
   testimonialsTitle: "Testimoni",
   testimonialsDescription: richTextParagraph("Testimoni dari wali santri dan alumni"),
   bottomCtaTitle: "Pendaftaran Santri Baru",

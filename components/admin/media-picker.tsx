@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Image from "next/image"
 import { Image as ImageIcon, Plus, Search, X, Loader2 } from "lucide-react"
 import { toast } from "sonner"
@@ -28,8 +28,8 @@ type MediaAsset = {
 type MediaPickerProps = {
   name: string
   label?: string
-  value: string | null // media ID
-  initialUrl?: string | null // media URL
+  value: string | null
+  initialUrl?: string | null
   placeholder?: string
 }
 
@@ -47,6 +47,10 @@ export function MediaPicker({
   const [search, setSearch] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
+  const [pendingFile, setPendingFile] = useState<File | null>(null)
+  const [pendingPreview, setPendingPreview] = useState<string | null>(null)
+  const [showConfirm, setShowConfirm] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   async function loadAssets() {
     setIsLoading(true)
@@ -61,24 +65,38 @@ export function MediaPicker({
     }
   }
 
-
-
-  async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (!file) return
 
+    const preview = URL.createObjectURL(file)
+    setPendingFile(file)
+    setPendingPreview(preview)
+    setShowConfirm(true)
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""
+    }
+  }
+
+  async function handleConfirmUpload() {
+    if (!pendingFile) return
+
     setIsUploading(true)
     const formData = new FormData()
-    formData.append("file", file)
+    formData.append("file", pendingFile)
 
     try {
       const newAsset = await uploadMediaAction(formData)
       if (newAsset) {
         toast.success("File berhasil diunggah")
-        // Reload list and select new asset
         await loadAssets()
         setSelectedId(newAsset.id)
         setPreviewUrl(newAsset.url)
+        setShowConfirm(false)
+        setPendingFile(null)
+        if (pendingPreview) URL.revokeObjectURL(pendingPreview)
+        setPendingPreview(null)
         setIsOpen(false)
       }
     } catch (err) {
@@ -87,6 +105,13 @@ export function MediaPicker({
     } finally {
       setIsUploading(false)
     }
+  }
+
+  function handleCancelUpload() {
+    setShowConfirm(false)
+    setPendingFile(null)
+    if (pendingPreview) URL.revokeObjectURL(pendingPreview)
+    setPendingPreview(null)
   }
 
   function handleSelect(asset: MediaAsset) {
@@ -107,7 +132,7 @@ export function MediaPicker({
   return (
     <div className="flex flex-col gap-2">
       {label ? <Label>{label}</Label> : null}
-      
+
       <div className="flex items-center gap-4 rounded-lg border border-input p-3 bg-background">
         <div className="relative flex size-16 shrink-0 items-center justify-center rounded-md border border-dashed bg-muted overflow-hidden">
           {previewUrl ? (
@@ -166,7 +191,8 @@ export function MediaPicker({
                       type="file"
                       accept="image/*"
                       className="hidden"
-                      onChange={handleFileUpload}
+                      ref={fileInputRef}
+                      onChange={handleFileSelect}
                       disabled={isUploading}
                     />
                   </Label>
@@ -226,6 +252,47 @@ export function MediaPicker({
           </div>
         </div>
       </div>
+
+      <Dialog open={showConfirm} onOpenChange={(open) => { if (!open) handleCancelUpload() }}>
+        <DialogContent className="max-w-lg w-[90vw] flex flex-col p-6">
+          <DialogHeader>
+            <DialogTitle>Konfirmasi Unggah Gambar</DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-col gap-4 py-4">
+            <div className="relative aspect-video w-full rounded-md overflow-hidden border bg-muted">
+              {pendingPreview && (
+                <Image
+                  src={pendingPreview}
+                  alt="Preview gambar"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 600px) 100vw, 500px"
+                />
+              )}
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm font-medium">{pendingFile?.name}</p>
+              <p className="text-xs text-muted-foreground">
+                {pendingFile ? `${(pendingFile.size / 1024).toFixed(1)} KB` : ""}
+              </p>
+            </div>
+          </div>
+          <div className="flex justify-end gap-2">
+            <Button type="button" variant="outline" onClick={handleCancelUpload} disabled={isUploading}>
+              Batal
+            </Button>
+            <Button type="button" onClick={handleConfirmUpload} disabled={isUploading}>
+              {isUploading ? (
+                <>
+                  <Loader2 className="size-4 mr-2 animate-spin" /> Mengunggah...
+                </>
+              ) : (
+                "Unggah Sekarang"
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <input type="hidden" name={name} value={selectedId || ""} />
     </div>
