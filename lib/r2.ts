@@ -1,5 +1,6 @@
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3"
 import sharp from "sharp"
+import heicConvert from "heic-convert"
 
 const hasR2Env = !!(
   process.env.R2_ACCOUNT_ID &&
@@ -31,9 +32,31 @@ async function processImage(
   filename: string,
   mimeType: string
 ): Promise<{ buffer: Buffer; mime: string; key: string }> {
-  if (mimeType.startsWith("image/") && mimeType !== "image/svg+xml" && mimeType !== "image/gif") {
+  // Handle HEIC files - convert to JPEG first since Sharp may not support HEIC
+  const isHeic = mimeType === "image/heic" || mimeType === "image/heif" || filename.toLowerCase().endsWith(".heic") || filename.toLowerCase().endsWith(".heif")
+
+  let inputBuffer = buffer
+  let inputMime = mimeType
+
+  if (isHeic) {
     try {
-      const compressedBuffer = await sharp(buffer)
+      console.log("[R2] Converting HEIC to JPEG...")
+      const jpegBuffer = await heicConvert({
+        buffer,
+        format: "JPEG",
+        quality: 0.92,
+      })
+      inputBuffer = Buffer.from(jpegBuffer)
+      inputMime = "image/jpeg"
+      console.log("[R2] HEIC converted to JPEG successfully")
+    } catch (err) {
+      console.error("[R2] HEIC conversion failed, trying original:", err)
+    }
+  }
+
+  if (inputMime.startsWith("image/") && inputMime !== "image/svg+xml" && inputMime !== "image/gif") {
+    try {
+      const compressedBuffer = await sharp(inputBuffer)
         .webp({ quality: 80 })
         .toBuffer()
 
@@ -51,8 +74,8 @@ async function processImage(
   }
 
   return {
-    buffer,
-    mime: mimeType,
+    buffer: inputBuffer,
+    mime: inputMime,
     key: `${Date.now()}-${filename}`,
   }
 }

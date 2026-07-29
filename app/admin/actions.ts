@@ -222,10 +222,10 @@ export async function uploadMediaAction(formData: FormData) {
     const db = getDb()
     if (!db) throw new Error("DB not initialized")
 
-    const isImage = file.type.startsWith("image/")
+    const isImage = file.type.startsWith("image/") || /\.(heic|heif|jpg|jpeg|png|gif|webp|bmp|tiff|svg)$/i.test(file.name)
     const finalMime = isImage && file.type !== "image/svg+xml" && file.type !== "image/gif"
       ? "image/webp"
-      : file.type
+      : file.type || "application/octet-stream"
 
     const [inserted] = await db
       .insert(schema.mediaAssets)

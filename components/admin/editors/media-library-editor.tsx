@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react"
 import Image from "next/image"
-import { Image as ImageIcon, Plus, Trash2, Loader2, Search } from "lucide-react"
+import { Image as ImageIcon, Plus, Trash2, Loader2, Search, AlertCircle } from "lucide-react"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
@@ -129,7 +129,7 @@ export function MediaLibraryEditor({ initialAssets }: MediaLibraryEditorProps) {
           <span>Unggah Gambar</span>
           <input
             type="file"
-            accept="image/*"
+            accept="image/*,.heic,.heif,.webp,.png,.jpg,.jpeg,.gif,.bmp,.tiff,.svg"
             className="hidden"
             ref={fileInputRef}
             onChange={handleFileSelect}
@@ -201,15 +201,21 @@ export function MediaLibraryEditor({ initialAssets }: MediaLibraryEditorProps) {
             <DialogTitle>Konfirmasi Unggah Gambar</DialogTitle>
           </DialogHeader>
           <div className="flex flex-col gap-4 py-4">
-            <div className="relative aspect-video w-full rounded-md overflow-hidden border bg-muted">
-              {pendingPreview && (
-                <Image
+            <div className="relative aspect-video w-full rounded-md overflow-hidden border bg-muted flex items-center justify-center">
+              {isUploading ? (
+                <div className="flex flex-col items-center gap-2">
+                  <Loader2 className="size-8 animate-spin text-primary" />
+                  <p className="text-xs text-muted-foreground">Mengunggah ke R2...</p>
+                </div>
+              ) : pendingPreview ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
                   src={pendingPreview}
                   alt="Preview gambar"
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 600px) 100vw, 500px"
+                  className="w-full h-full object-contain"
                 />
+              ) : (
+                <ImageIcon className="size-10 text-muted-foreground" />
               )}
             </div>
             <div className="space-y-1">
@@ -217,6 +223,12 @@ export function MediaLibraryEditor({ initialAssets }: MediaLibraryEditorProps) {
               <p className="text-xs text-muted-foreground">
                 {pendingFile ? `${(pendingFile.size / 1024).toFixed(1)} KB` : ""}
               </p>
+              {pendingFile && pendingFile.name.toLowerCase().endsWith(".heic") && (
+                <p className="text-xs text-amber-600 flex items-center gap-1">
+                  <AlertCircle className="size-3" />
+                  Format HEIC akan dikonversi ke WebP
+                </p>
+              )}
             </div>
           </div>
           <div className="flex justify-end gap-2">
