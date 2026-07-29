@@ -1,6 +1,5 @@
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3"
 import sharp from "sharp"
-import heicConvert from "heic-convert"
 
 const hasR2Env = !!(
   process.env.R2_ACCOUNT_ID &&
@@ -41,6 +40,7 @@ async function processImage(
   if (isHeic) {
     try {
       console.log("[R2] Converting HEIC to JPEG...")
+      const { default: heicConvert } = await import("heic-convert")
       const jpegBuffer = await heicConvert({
         buffer,
         format: "JPEG",
