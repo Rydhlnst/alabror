@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Plus_Jakarta_Sans } from "next/font/google"
 
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { Toaster } from "@/components/ui/sonner"
 import { getSiteSettings } from "@/lib/db/queries"
 import { richTextToPlainText } from "@/lib/cms/rich-text"
 import { cn } from "@/lib/utils"
@@ -48,6 +49,7 @@ export default async function RootLayout({
           <div className="relative flex min-h-screen flex-col overflow-x-hidden">
             {children}
           </div>
+          <Toaster />
         </TooltipProvider>
       </body>
     </html>
