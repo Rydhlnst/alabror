@@ -1,5 +1,4 @@
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3"
-import sharp from "sharp"
 
 const hasR2Env = !!(
   process.env.R2_ACCOUNT_ID &&
@@ -56,6 +55,7 @@ async function processImage(
 
   if (inputMime.startsWith("image/") && inputMime !== "image/svg+xml" && inputMime !== "image/gif") {
     try {
+      const { default: sharp } = await import("sharp")
       const compressedBuffer = await sharp(inputBuffer)
         .webp({ quality: 80 })
         .toBuffer()
@@ -69,7 +69,7 @@ async function processImage(
         key: webpKey,
       }
     } catch (err) {
-      console.error("[R2] Sharp compression failed, using original file:", err)
+      console.error("[R2] Sharp compression skipped, uploading original file:", err instanceof Error ? err.message : err)
     }
   }
 
