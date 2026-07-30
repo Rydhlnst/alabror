@@ -41,6 +41,7 @@ export default buildConfig({
     user: "santri-users",
     importMap: {
       baseDir: "./app/(payload)",
+      importMapFile: "./app/(payload)/admin/importMap.js",
     },
   },
 
