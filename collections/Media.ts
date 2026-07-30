@@ -1,3 +1,4 @@
+import path from "path"
 import type { CollectionConfig } from "payload"
 
 export const Media: CollectionConfig = {
@@ -6,8 +7,17 @@ export const Media: CollectionConfig = {
     useAsTitle: "label",
   },
   upload: {
-    staticDir: "media",
+    staticDir: path.resolve(process.cwd(), "media"),
     mimeTypes: ["image/*", "video/*"],
+    adminThumbnail: "thumbnail",
+    imageSizes: [
+      {
+        name: "thumbnail",
+        width: 300,
+        height: 300,
+        position: "centre",
+      },
+    ],
   },
   fields: [
     { name: "label", type: "text", required: true },

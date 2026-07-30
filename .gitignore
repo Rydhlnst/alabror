@@ -44,3 +44,6 @@ next-env.d.ts
 # scraped content / testing artifacts
 .firecrawl/
 .playwright-mcp/
+
+# Payload CMS local uploads
+/media
