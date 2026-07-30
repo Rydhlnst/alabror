@@ -1,9 +1,7 @@
 "use server"
 
 import { redirect } from "next/navigation"
-import { eq } from "drizzle-orm"
-import { getDb, schema } from "@/lib/db"
-import { createPasswordHash } from "@/lib/auth/password"
+import { getPayloadClient } from "@/lib/payload"
 import { createSantriSession } from "@/lib/auth/santri"
 
 export async function registerAction(formData: FormData) {
@@ -28,36 +26,43 @@ export async function registerAction(formData: FormData) {
     redirect("/register?error=2")
   }
 
-  const db = getDb()
-  if (!db) {
-    redirect("/register?error=1")
-  }
+  const payload = await getPayloadClient()
 
-  const existing = await db.select().from(schema.santriUsers).where(eq(schema.santriUsers.email, email)).limit(1)
-  if (existing.length > 0) {
+  const existing = await payload.find({
+    collection: "santri-users" as any,
+    where: { email: { equals: email } },
+    limit: 1,
+  })
+  if (existing.docs.length > 0) {
     redirect("/register?error=3")
   }
 
-  const passwordHash = await createPasswordHash(password)
-
-  const [user] = await db
-    .insert(schema.santriUsers)
-    .values({ email, passwordHash, name, phone: phone || null })
-    .returning({ id: schema.santriUsers.id })
-
-  await db.insert(schema.santriRegistrations).values({
-    userId: user.id,
-    jenjang,
-    namaLengkap,
-    tempatLahir,
-    tanggalLahir,
-    jenisKelamin,
-    alamat,
-    namaOrtu,
-    teleponOrtu,
-    status: "pending",
+  const user = await payload.create({
+    collection: "santri-users" as any,
+    data: {
+      email,
+      password,
+      name,
+      phone: phone || undefined,
+    },
   })
 
-  await createSantriSession(user.id, email)
+  await payload.create({
+    collection: "santri-registrations" as any,
+    data: {
+      user: user.id,
+      jenjang,
+      namaLengkap,
+      tempatLahir,
+      tanggalLahir,
+      jenisKelamin,
+      alamat,
+      namaOrtu,
+      teleponOrtu,
+      status: "pending",
+    },
+  })
+
+  await createSantriSession(String(user.id), email)
   redirect("/dashboard")
 }

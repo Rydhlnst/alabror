@@ -1,32 +1,8 @@
-import { eq, asc } from "drizzle-orm"
-import { getDb } from "./index"
-
-type DbClient = NonNullable<ReturnType<typeof getDb>>
-import * as schema from "./schema"
-import * as defaults from "../cms/default-content"
-import { siteConfig as staticSiteConfig } from "../content"
+import { getPayloadClient } from "@/lib/payload"
+import * as defaults from "@/lib/cms/default-content"
+import { siteConfig as staticSiteConfig } from "@/lib/content"
 
 const R2_PUBLIC_URL = process.env.R2_PUBLIC_URL || ""
-
-const staticSiteSettings = {
-  ...staticSiteConfig,
-  description: defaults.defaultSiteSettings.description,
-  metadataTitle: defaults.defaultSiteSettings.metadataTitle,
-  metadataDescription: defaults.defaultSiteSettings.metadataDescription,
-  phone: defaults.defaultSiteSettings.phone,
-  phoneDisplay: defaults.defaultSiteSettings.phoneDisplay,
-  nsp: defaults.defaultSiteSettings.nsp,
-  nspYear: defaults.defaultSiteSettings.nspYear,
-  foundedYear: defaults.defaultSiteSettings.foundedYear,
-  facebook: defaults.defaultSiteSettings.facebook,
-  focusPendidikan: defaults.defaultSiteSettings.focusPendidikan,
-}
-
-async function resolveMediaUrl(db: DbClient, mediaId: string | null | undefined): Promise<string | null> {
-  if (!mediaId) return null
-  const [media] = await db.select().from(schema.mediaAssets).where(eq(schema.mediaAssets.id, mediaId)).limit(1)
-  return media?.url ?? null
-}
 
 function fallbackR2(path: string): string {
   if (R2_PUBLIC_URL && path.startsWith("/")) {
@@ -36,18 +12,20 @@ function fallbackR2(path: string): string {
   return path
 }
 
+function getMediaUrl(media: unknown): string | null {
+  if (!media || typeof media !== "object") return null
+  const m = media as Record<string, unknown>
+  if (typeof m.url === "string") return m.url
+  return null
+}
+
 export async function getSiteSettings() {
-  const db = getDb()
-  if (!db) return staticSiteSettings
-
   try {
-    const [settings] = await db.select().from(schema.siteSettings).where(eq(schema.siteSettings.id, "site")).limit(1)
-    if (!settings) return staticSiteSettings
-
-    const logoUrl = await resolveMediaUrl(db, settings.logoMediaId)
-
+    const payload = await getPayloadClient()
+    const settings = await payload.findGlobal({ slug: "site-settings" })
+    const logoUrl = getMediaUrl(settings.logo)
     return {
-      id: settings.id,
+      id: "site",
       name: settings.name,
       shortName: settings.shortName,
       tagline: settings.tagline,
@@ -56,35 +34,44 @@ export async function getSiteSettings() {
       whatsappLabel: settings.whatsappLabel,
       brochureHref: settings.brochureHref,
       mapHref: settings.mapHref,
-      logo: logoUrl || staticSiteSettings.logo,
+      logo: logoUrl || staticSiteConfig.logo,
       address: settings.address,
       email: settings.email,
       officeHours: settings.officeHours,
-      phone: staticSiteSettings.phone,
-      phoneDisplay: staticSiteSettings.phoneDisplay,
-      nsp: staticSiteSettings.nsp,
-      nspYear: staticSiteSettings.nspYear,
-      foundedYear: staticSiteSettings.foundedYear,
-      facebook: staticSiteSettings.facebook,
-      focusPendidikan: staticSiteSettings.focusPendidikan,
-      metadataTitle: settings.metadataTitle || staticSiteSettings.metadataTitle,
-      metadataDescription: settings.metadataDescription || staticSiteSettings.metadataDescription,
-      motto: staticSiteSettings.motto,
+      phone: staticSiteConfig.phone,
+      phoneDisplay: staticSiteConfig.phoneDisplay,
+      nsp: staticSiteConfig.nsp,
+      nspYear: staticSiteConfig.nspYear,
+      foundedYear: staticSiteConfig.foundedYear,
+      facebook: staticSiteConfig.facebook,
+      focusPendidikan: staticSiteConfig.focusPendidikan,
+      metadataTitle: settings.metadataTitle || `${staticSiteConfig.shortName} | ${staticSiteConfig.tagline}`,
+      metadataDescription: settings.metadataDescription || staticSiteConfig.description,
+      motto: staticSiteConfig.motto,
     }
   } catch {
-    return staticSiteSettings
+    return {
+      ...staticSiteConfig,
+      description: defaults.defaultSiteSettings.description,
+      metadataTitle: defaults.defaultSiteSettings.metadataTitle,
+      metadataDescription: defaults.defaultSiteSettings.metadataDescription,
+      phone: defaults.defaultSiteSettings.phone,
+      phoneDisplay: defaults.defaultSiteSettings.phoneDisplay,
+      nsp: defaults.defaultSiteSettings.nsp,
+      nspYear: defaults.defaultSiteSettings.nspYear,
+      foundedYear: defaults.defaultSiteSettings.foundedYear,
+      facebook: defaults.defaultSiteSettings.facebook,
+      focusPendidikan: defaults.defaultSiteSettings.focusPendidikan,
+    }
   }
 }
 
 export async function getNavigation() {
-  const db = getDb()
-  if (!db) return defaults.defaultNavigation
-
   try {
-    const items = await db.select().from(schema.navigationItems).orderBy(asc(schema.navigationItems.sortOrder))
-    if (items.length === 0) return defaults.defaultNavigation
-
-    return items.map(item => ({
+    const payload = await getPayloadClient()
+    const result = await payload.find({ collection: "navigation" as any, sort: "sortOrder", limit: 100 })
+    if (result.docs.length === 0) return defaults.defaultNavigation
+    return result.docs.map((item: any) => ({
       label: item.label,
       href: item.href,
       openInNewTab: item.openInNewTab,
@@ -97,34 +84,14 @@ export async function getNavigation() {
 }
 
 export async function getHomepageSections() {
-  const db = getDb()
-  if (!db) {
-    return {
-      ...defaults.defaultHomepage,
-      heroImageUrl: defaults.defaultHomepage.heroImagePath,
-      faqImageUrl: defaults.defaultHomepage.faqImagePath,
-      heroStats: defaults.defaultHomepage.heroStats,
-    }
-  }
-
   try {
-    const [settings] = await db.select().from(schema.homepageSections).where(eq(schema.homepageSections.id, "homepage")).limit(1)
-    if (!settings) {
-      return {
-        ...defaults.defaultHomepage,
-        heroImageUrl: defaults.defaultHomepage.heroImagePath,
-        faqImageUrl: defaults.defaultHomepage.faqImagePath,
-        heroStats: defaults.defaultHomepage.heroStats,
-      }
-    }
-
-    const heroImageUrl = await resolveMediaUrl(db, settings.heroImageMediaId)
-    const faqImageUrl = await resolveMediaUrl(db, settings.faqImageMediaId)
-
-    const stats = await db.select().from(schema.heroStats).orderBy(asc(schema.heroStats.sortOrder))
-
+    const payload = await getPayloadClient()
+    const settings = await payload.findGlobal({ slug: "homepage" })
+    const heroImageUrl = getMediaUrl((settings as any).heroImage)
+    const faqImageUrl = getMediaUrl((settings as any).faqImage)
+    const statsResult = await payload.find({ collection: "hero-stats" as any, sort: "sortOrder", limit: 100 })
     return {
-      id: settings.id,
+      id: "homepage",
       heroBadge: settings.heroBadge,
       heroTitle: settings.heroTitle,
       heroDescription: settings.heroDescription,
@@ -135,20 +102,6 @@ export async function getHomepageSections() {
       secondaryCtaHref: settings.secondaryCtaHref,
       newsTitle: settings.newsTitle,
       newsDescription: settings.newsDescription,
-      articleTitle: settings.partnersTitle,
-      articleDescription: settings.partnersDescription,
-      facilitiesTitle: settings.facilitiesTitle,
-      facilitiesDescription: settings.facilitiesDescription,
-      programTitle: settings.educationTitle,
-      programDescription: settings.educationDescription,
-      galleryTitle: settings.testimonialsTitle,
-      galleryDescription: settings.testimonialsDescription,
-      teachersTitle: settings.whyUsTitle,
-      teachersDescription: settings.whyUsDescription,
-      ctaTitle: settings.bottomCtaTitle,
-      ctaDescription: settings.bottomCtaDescription,
-      ctaLabel: settings.bottomCtaLabel,
-      ctaHref: settings.bottomCtaHref,
       partnersTitle: settings.partnersTitle,
       partnersDescription: settings.partnersDescription,
       historyTitle: settings.historyTitle,
@@ -157,6 +110,8 @@ export async function getHomepageSections() {
       whyUsDescription: settings.whyUsDescription,
       educationTitle: settings.educationTitle,
       educationDescription: settings.educationDescription,
+      facilitiesTitle: settings.facilitiesTitle,
+      facilitiesDescription: settings.facilitiesDescription,
       faqTitle: settings.faqTitle,
       faqDescription: settings.faqDescription,
       faqImageUrl: faqImageUrl || defaults.defaultHomepage.faqImagePath,
@@ -166,7 +121,9 @@ export async function getHomepageSections() {
       bottomCtaDescription: settings.bottomCtaDescription,
       bottomCtaLabel: settings.bottomCtaLabel,
       bottomCtaHref: settings.bottomCtaHref,
-      heroStats: stats.length > 0 ? stats.map(s => ({ value: s.value, label: s.label })) : defaults.defaultHomepage.heroStats,
+      heroStats: statsResult.docs.length > 0
+        ? statsResult.docs.map((s: any) => ({ value: s.value, label: s.label }))
+        : defaults.defaultHomepage.heroStats,
     }
   } catch {
     return {
@@ -183,75 +140,41 @@ export async function getPsbConfig() {
 }
 
 export async function getNewsItems() {
-  const db = getDb()
-  if (!db) return defaults.defaultNewsItems.map(item => ({ ...item, cover: item.coverPath }))
-
   try {
-    const items = await db.select().from(schema.newsItems).where(eq(schema.newsItems.published, true)).orderBy(asc(schema.newsItems.sortOrder))
-    if (items.length === 0) return defaults.defaultNewsItems.map(item => ({ ...item, cover: item.coverPath }))
-
-    return Promise.all(items.map(async item => {
-      const cover = await resolveMediaUrl(db, item.coverMediaId)
-      return {
-        title: item.title,
-        dateLabel: item.dateLabel,
-        category: item.category || "",
-        summary: item.summary,
-        href: item.href,
-        cover: cover || fallbackR2("/foto1.jpg"),
-        published: item.published,
-        sortOrder: item.sortOrder,
-      }
+    const payload = await getPayloadClient()
+    const result = await payload.find({ collection: "news" as any, sort: "sortOrder", where: { published: { equals: true } }, limit: 100 })
+    if (result.docs.length === 0) return defaults.defaultNewsItems.map((item) => ({ ...item, cover: item.coverPath }))
+    return result.docs.map((item: any) => ({
+      title: item.title,
+      dateLabel: item.dateLabel,
+      category: item.category || "",
+      summary: item.summary,
+      href: item.href,
+      cover: getMediaUrl(item.cover) || fallbackR2("/foto1.jpg"),
+      published: item.published,
+      sortOrder: item.sortOrder,
     }))
   } catch {
-    return defaults.defaultNewsItems.map(item => ({ ...item, cover: item.coverPath }))
+    return defaults.defaultNewsItems.map((item) => ({ ...item, cover: item.coverPath }))
   }
 }
 
 export async function getArticleItems() {
-  const db = getDb()
-  if (!db) return defaults.defaultArticleItems.map(item => ({ ...item, cover: item.coverPath }))
-
-  try {
-    const items = await db.select().from(schema.newsItems).where(eq(schema.newsItems.published, true)).orderBy(asc(schema.newsItems.sortOrder))
-    if (items.length === 0) return defaults.defaultArticleItems.map(item => ({ ...item, cover: item.coverPath }))
-
-    return Promise.all(items.map(async item => {
-      const cover = await resolveMediaUrl(db, item.coverMediaId)
-      return {
-        title: item.title,
-        dateLabel: item.dateLabel,
-        category: item.category || "",
-        summary: item.summary,
-        href: item.href,
-        cover: cover || fallbackR2("/foto1.jpg"),
-        published: item.published,
-        sortOrder: item.sortOrder,
-      }
-    }))
-  } catch {
-    return defaults.defaultArticleItems.map(item => ({ ...item, cover: item.coverPath }))
-  }
+  return getNewsItems()
 }
 
 export async function getFacilityItems() {
-  const db = getDb()
-  if (!db) return defaults.defaultFacilityItems
-
   try {
-    const items = await db.select().from(schema.facilities).orderBy(asc(schema.facilities.sortOrder))
-    if (items.length === 0) return defaults.defaultFacilityItems
-
-    return Promise.all(items.map(async item => {
-      const image = await resolveMediaUrl(db, item.imageMediaId)
-      return {
-        name: item.name,
-        description: item.description,
-        imagePath: image || fallbackR2("/foto1.jpg"),
-        href: "#",
-        iconKey: item.iconKey,
-        sortOrder: item.sortOrder,
-      }
+    const payload = await getPayloadClient()
+    const result = await payload.find({ collection: "facilities" as any, sort: "sortOrder", limit: 100 })
+    if (result.docs.length === 0) return defaults.defaultFacilityItems
+    return result.docs.map((item: any) => ({
+      name: item.name,
+      description: item.description,
+      imagePath: getMediaUrl(item.image) || fallbackR2("/foto1.jpg"),
+      href: "#",
+      iconKey: item.iconKey,
+      sortOrder: item.sortOrder,
     }))
   } catch {
     return defaults.defaultFacilityItems
@@ -263,48 +186,34 @@ export async function getTeacherItems() {
 }
 
 export async function getGalleryItems() {
-  const db = getDb()
-  if (!db) return defaults.defaultGalleryItems.map(item => ({ ...item, image: item.imagePath }))
-
   try {
-    const items = await db.select().from(schema.galleryItems).where(eq(schema.galleryItems.published, true)).orderBy(asc(schema.galleryItems.sortOrder))
-    if (items.length === 0) return defaults.defaultGalleryItems.map(item => ({ ...item, image: item.imagePath }))
-
-    return Promise.all(items.map(async item => {
-      const image = await resolveMediaUrl(db, item.imageMediaId)
-      return {
-        image: image || fallbackR2("/foto1.jpg"),
-        alt: item.alt,
-        caption: item.caption,
-        aspect: item.aspect,
-        published: item.published,
-        sortOrder: item.sortOrder,
-      }
+    const payload = await getPayloadClient()
+    const result = await payload.find({ collection: "gallery" as any, sort: "sortOrder", where: { published: { equals: true } }, limit: 100 })
+    if (result.docs.length === 0) return defaults.defaultGalleryItems.map((item) => ({ ...item, image: item.imagePath }))
+    return result.docs.map((item: any) => ({
+      image: getMediaUrl(item.image) || fallbackR2("/foto1.jpg"),
+      alt: item.alt,
+      caption: item.caption,
+      aspect: item.aspect,
+      published: item.published,
+      sortOrder: item.sortOrder,
     }))
   } catch {
-    return defaults.defaultGalleryItems.map(item => ({ ...item, image: item.imagePath }))
+    return defaults.defaultGalleryItems.map((item) => ({ ...item, image: item.imagePath }))
   }
 }
 
 export async function getProgramPendidikanItems() {
-  const db = getDb()
-  if (!db) return defaults.defaultProgramPendidikanItems
-
   try {
-    const programs = await db.select().from(schema.educationPrograms).orderBy(asc(schema.educationPrograms.sortOrder))
-    if (programs.length === 0) return defaults.defaultProgramPendidikanItems
-
-    return Promise.all(programs.map(async program => {
-      const image = await resolveMediaUrl(db, program.imageMediaId)
-      const points = await db.select().from(schema.educationProgramPoints).where(eq(schema.educationProgramPoints.programId, program.id)).orderBy(asc(schema.educationProgramPoints.sortOrder))
-
-      return {
-        name: program.name,
-        description: program.summary,
-        imagePath: image || fallbackR2("/foto1.jpg"),
-        points: points.map(p => ({ body: p.body, sortOrder: p.sortOrder })),
-        sortOrder: program.sortOrder,
-      }
+    const payload = await getPayloadClient()
+    const result = await payload.find({ collection: "education-programs" as any, sort: "sortOrder", limit: 100, depth: 2 })
+    if (result.docs.length === 0) return defaults.defaultProgramPendidikanItems
+    return result.docs.map((program: any) => ({
+      name: program.name,
+      description: program.summary,
+      imagePath: getMediaUrl(program.image) || fallbackR2("/foto1.jpg"),
+      points: (program.points || []).map((p: any) => ({ body: p.body, sortOrder: p.sortOrder })),
+      sortOrder: program.sortOrder,
     }))
   } catch {
     return defaults.defaultProgramPendidikanItems
@@ -312,14 +221,11 @@ export async function getProgramPendidikanItems() {
 }
 
 export async function getStrukturPengurusItems() {
-  const db = getDb()
-  if (!db) return defaults.defaultStrukturPengurusItems
-
   try {
-    const items = await db.select().from(schema.profileOrgRows).orderBy(asc(schema.profileOrgRows.sortOrder))
-    if (items.length === 0) return defaults.defaultStrukturPengurusItems
-
-    return items.map(item => ({
+    const payload = await getPayloadClient()
+    const result = await payload.find({ collection: "profile-org" as any, sort: "sortOrder", limit: 100 })
+    if (result.docs.length === 0) return defaults.defaultStrukturPengurusItems
+    return result.docs.map((item: any) => ({
       jabatan: item.role,
       nama: item.name,
       sortOrder: item.sortOrder,
@@ -330,17 +236,14 @@ export async function getStrukturPengurusItems() {
 }
 
 export async function getProfileSection() {
-  const db = getDb()
-  if (!db) return defaults.defaultProfileSection
-
   try {
-    const [page] = await db.select().from(schema.profilePage).where(eq(schema.profilePage.id, "profile")).limit(1)
-    if (!page) return defaults.defaultProfileSection
-
-    const missionItems = await db.select().from(schema.profileMissionItems).orderBy(asc(schema.profileMissionItems.sortOrder))
-    const identityRows = await db.select().from(schema.profileIdentityRows).orderBy(asc(schema.profileIdentityRows.sortOrder))
-    const orgRows = await db.select().from(schema.profileOrgRows).orderBy(asc(schema.profileOrgRows.sortOrder))
-
+    const payload = await getPayloadClient()
+    const page = await payload.findGlobal({ slug: "profile-page" })
+    const missionResult = await payload.find({ collection: "profile-mission" as any, sort: "sortOrder", limit: 100 })
+    const identityResult = await payload.find({ collection: "profile-identity" as any, sort: "sortOrder", limit: 100 })
+    const orgResult = await payload.find({ collection: "profile-org" as any, sort: "sortOrder", limit: 100 })
+    const goalResult = await payload.find({ collection: "profile-goals" as any, sort: "sortOrder", limit: 100 })
+    const programResult = await payload.find({ collection: "profile-programs" as any, sort: "sortOrder", limit: 100 })
     return {
       pageTitle: page.pageTitle,
       pageDescription: page.pageDescription,
@@ -349,9 +252,21 @@ export async function getProfileSection() {
       historyParagraphs: defaults.defaultProfileSection.historyParagraphs,
       vision: page.vision,
       visionItems: defaults.defaultProfileSection.visionItems,
-      missionItems: missionItems.length > 0 ? missionItems.map(m => ({ body: m.body, sortOrder: m.sortOrder })) : defaults.defaultProfileSection.missionItems,
-      identityRows: identityRows.length > 0 ? identityRows.map(r => ({ label: r.label, value: r.value, sortOrder: r.sortOrder })) : defaults.defaultProfileSection.identityRows,
-      orgRows: orgRows.length > 0 ? orgRows.map(r => ({ role: r.role, name: r.name, sortOrder: r.sortOrder })) : defaults.defaultProfileSection.orgRows,
+      missionItems: missionResult.docs.length > 0
+        ? missionResult.docs.map((m: any) => ({ body: m.body, sortOrder: m.sortOrder }))
+        : defaults.defaultProfileSection.missionItems,
+      identityRows: identityResult.docs.length > 0
+        ? identityResult.docs.map((r: any) => ({ label: r.label, value: r.value, sortOrder: r.sortOrder }))
+        : defaults.defaultProfileSection.identityRows,
+      orgRows: orgResult.docs.length > 0
+        ? orgResult.docs.map((r: any) => ({ role: r.role, name: r.name, sortOrder: r.sortOrder }))
+        : defaults.defaultProfileSection.orgRows,
+      goalItems: goalResult.docs.length > 0
+        ? goalResult.docs.map((g: any) => ({ body: g.body, sortOrder: g.sortOrder }))
+        : defaults.defaultProfileSection.goalItems,
+      programRows: programResult.docs.length > 0
+        ? programResult.docs.map((p: any) => ({ name: p.name, iconKey: p.iconKey, sortOrder: p.sortOrder }))
+        : defaults.defaultProfileSection.programRows,
     }
   } catch {
     return defaults.defaultProfileSection
@@ -359,39 +274,30 @@ export async function getProfileSection() {
 }
 
 export async function getContactSection() {
-  const db = getDb()
-  if (!db) return defaults.defaultContactSection
-
   try {
-    const [page] = await db.select().from(schema.contactPage).where(eq(schema.contactPage.id, "contact")).limit(1)
-    const methods = await db.select().from(schema.contactMethods).orderBy(asc(schema.contactMethods.sortOrder))
-    const locations = await db.select().from(schema.contactLocations).orderBy(asc(schema.contactLocations.sortOrder))
-
+    const payload = await getPayloadClient()
+    const page = await payload.findGlobal({ slug: "contact-page" })
+    const methodsResult = await payload.find({ collection: "contact-methods" as any, sort: "sortOrder", limit: 100 })
+    const locationsResult = await payload.find({ collection: "contact-locations" as any, sort: "sortOrder", limit: 100 })
     return {
-      pageTitle: page?.pageTitle || defaults.defaultContactSection.pageTitle,
-      pageDescription: page?.pageDescription || defaults.defaultContactSection.pageDescription,
-      infoTitle: page?.infoTitle || defaults.defaultContactSection.infoTitle,
-      infoDescription: page?.infoDescription || defaults.defaultContactSection.infoDescription,
-      locationTitle: page?.locationTitle || defaults.defaultContactSection.locationTitle,
-      locationDescription: page?.locationDescription || defaults.defaultContactSection.locationDescription,
-      methods: methods.length > 0 ? methods.map(m => ({
-        type: m.type,
-        title: m.title,
-        subtitle: m.subtitle,
-        description: m.description,
-        value: m.value,
-        actionLabel: m.actionLabel,
-        actionHref: m.actionHref,
-        sortOrder: m.sortOrder,
-      })) : defaults.defaultContactSection.methods,
-      locations: locations.length > 0 ? locations.map(l => ({
-        title: l.title,
-        subtitle: l.subtitle,
-        address: l.address,
-        mapEmbedUrl: l.mapEmbedUrl,
-        mapHref: l.mapHref,
-        sortOrder: l.sortOrder,
-      })) : defaults.defaultContactSection.locations,
+      pageTitle: page.pageTitle,
+      pageDescription: page.pageDescription,
+      infoTitle: page.infoTitle,
+      infoDescription: page.infoDescription,
+      locationTitle: page.locationTitle,
+      locationDescription: page.locationDescription,
+      methods: methodsResult.docs.length > 0
+        ? methodsResult.docs.map((m: any) => ({
+            type: m.type, title: m.title, subtitle: m.subtitle, description: m.description,
+            value: m.value, actionLabel: m.actionLabel, actionHref: m.actionHref, sortOrder: m.sortOrder,
+          }))
+        : defaults.defaultContactSection.methods,
+      locations: locationsResult.docs.length > 0
+        ? locationsResult.docs.map((l: any) => ({
+            title: l.title, subtitle: l.subtitle, address: l.address,
+            mapEmbedUrl: l.mapEmbedUrl, mapHref: l.mapHref, sortOrder: l.sortOrder,
+          }))
+        : defaults.defaultContactSection.locations,
     }
   } catch {
     return defaults.defaultContactSection
@@ -399,39 +305,77 @@ export async function getContactSection() {
 }
 
 export async function getFooterSection() {
-  const db = getDb()
-  if (!db) return defaults.defaultFooterSection
-
   try {
-    const [settings] = await db.select().from(schema.footerSettings).where(eq(schema.footerSettings.id, "footer")).limit(1)
-    const quickLinks = await db.select().from(schema.footerQuickLinks).orderBy(asc(schema.footerQuickLinks.sortOrder))
-    const socialLinks = await db.select().from(schema.footerSocialLinks).orderBy(asc(schema.footerSocialLinks.sortOrder))
-
+    const payload = await getPayloadClient()
+    const settings = await payload.findGlobal({ slug: "footer-settings" })
+    const quickLinksResult = await payload.find({ collection: "footer-quick-links" as any, sort: "sortOrder", limit: 100 })
+    const socialLinksResult = await payload.find({ collection: "footer-social-links" as any, sort: "sortOrder", limit: 100 })
     return {
-      brandText: settings?.brandText || defaults.defaultFooterSection.brandText,
-      socialIntro: settings?.socialIntro || defaults.defaultFooterSection.socialIntro,
-      copyrightText: settings?.copyrightText || defaults.defaultFooterSection.copyrightText,
-      quickLinks: quickLinks.length > 0 ? quickLinks.map(l => ({ label: l.label, href: l.href, sortOrder: l.sortOrder })) : defaults.defaultFooterSection.quickLinks,
-      socialLinks: socialLinks.length > 0 ? socialLinks.map(l => ({ platform: l.platform, href: l.href, sortOrder: l.sortOrder })) : defaults.defaultFooterSection.socialLinks,
+      brandText: settings.brandText || defaults.defaultFooterSection.brandText,
+      socialIntro: settings.socialIntro || defaults.defaultFooterSection.socialIntro,
+      copyrightText: settings.copyrightText || defaults.defaultFooterSection.copyrightText,
+      quickLinks: quickLinksResult.docs.length > 0
+        ? quickLinksResult.docs.map((l: any) => ({ label: l.label, href: l.href, sortOrder: l.sortOrder }))
+        : defaults.defaultFooterSection.quickLinks,
+      socialLinks: socialLinksResult.docs.length > 0
+        ? socialLinksResult.docs.map((l: any) => ({ platform: l.platform, href: l.href, sortOrder: l.sortOrder }))
+        : defaults.defaultFooterSection.socialLinks,
     }
   } catch {
     return defaults.defaultFooterSection
   }
 }
 
-// Legacy exports for backward compatibility
 export async function getWhyUsItems() {
-  return defaults.defaultWhyUsItems
+  try {
+    const payload = await getPayloadClient()
+    const result = await payload.find({ collection: "why-us" as any, sort: "sortOrder", limit: 100 })
+    if (result.docs.length === 0) return defaults.defaultWhyUsItems
+    return result.docs.map((item: any) => ({
+      title: item.title,
+      description: item.description,
+      iconKey: item.iconKey,
+      sortOrder: item.sortOrder,
+    }))
+  } catch {
+    return defaults.defaultWhyUsItems
+  }
 }
+
 export async function getPartnerItems() {
-  return defaults.defaultPartnerItems.map(item => ({
-    ...item,
-    logo: staticSiteConfig.heroImage,
-  }))
+  try {
+    const payload = await getPayloadClient()
+    const result = await payload.find({ collection: "partners" as any, sort: "sortOrder", limit: 100 })
+    if (result.docs.length === 0) return defaults.defaultPartnerItems.map((item) => ({ ...item, logo: staticSiteConfig.heroImage }))
+    return result.docs.map((item: any) => ({
+      name: item.name,
+      note: item.note,
+      logo: getMediaUrl(item.logo) || staticSiteConfig.heroImage,
+      href: item.href,
+      sortOrder: item.sortOrder,
+    }))
+  } catch {
+    return defaults.defaultPartnerItems.map((item) => ({ ...item, logo: staticSiteConfig.heroImage }))
+  }
 }
+
 export async function getHistoryTimeline() {
-  return defaults.defaultHistoryTimeline
+  try {
+    const payload = await getPayloadClient()
+    const result = await payload.find({ collection: "history-timeline" as any, sort: "sortOrder", limit: 100 })
+    if (result.docs.length === 0) return defaults.defaultHistoryTimeline
+    return result.docs.map((item: any) => ({
+      year: item.year,
+      title: item.title,
+      description: item.description,
+      color: item.color,
+      sortOrder: item.sortOrder,
+    }))
+  } catch {
+    return defaults.defaultHistoryTimeline
+  }
 }
+
 export async function getEditorialItems() { return [] }
 export async function getAnnouncementItems() { return [] }
 export async function getBlogItems() { return [] }
@@ -439,31 +383,103 @@ export async function getActivityItems() { return [] }
 export async function getQuoteItems() { return [] }
 export async function getAgendaItems() { return [] }
 export async function getPancaJiwaItems() { return [] }
+
 export async function getEducationSection() {
-  return defaults.defaultEducationSection
-}
-export async function getFacilitiesSection() {
-  const items = await getFacilityItems()
-  return {
-    pageTitle: defaults.defaultFacilitiesSection?.pageTitle || "Fasilitas",
-    pageDescription: defaults.defaultFacilitiesSection?.pageDescription || "",
-    highlights: defaults.defaultFacilitiesSection?.highlights || [],
-    items,
+  try {
+    const payload = await getPayloadClient()
+    const highlightsResult = await payload.find({ collection: "education-highlights" as any, sort: "sortOrder", limit: 100 })
+    const programsResult = await payload.find({ collection: "education-programs" as any, sort: "sortOrder", limit: 100, depth: 2 })
+    return {
+      pageTitle: defaults.defaultEducationSection.pageTitle,
+      pageDescription: defaults.defaultEducationSection.pageDescription,
+      highlights: highlightsResult.docs.length > 0
+        ? highlightsResult.docs.map((h: any) => ({ body: h.body, sortOrder: h.sortOrder }))
+        : defaults.defaultEducationSection.highlights,
+      programs: programsResult.docs.length > 0
+        ? programsResult.docs.map((p: any) => ({
+            name: p.name, summary: p.summary, focus: p.focus,
+            imagePath: getMediaUrl(p.image) || fallbackR2("/foto1.jpg"),
+            iconKey: p.iconKey, homePrimaryLabel: p.homePrimaryLabel, homePrimaryHref: p.homePrimaryHref,
+            homeSecondaryLabel: p.homeSecondaryLabel, homeSecondaryHref: p.homeSecondaryHref,
+            sortOrder: p.sortOrder, points: (p.points || []).map((pt: any) => ({ body: pt.body, sortOrder: pt.sortOrder })),
+          }))
+        : defaults.defaultEducationSection.programs,
+    }
+  } catch {
+    return defaults.defaultEducationSection
   }
 }
+
+export async function getFacilitiesSection() {
+  const items = await getFacilityItems()
+  try {
+    const payload = await getPayloadClient()
+    const highlightsResult = await payload.find({ collection: "facility-highlights" as any, sort: "sortOrder", limit: 100 })
+    return {
+      pageTitle: defaults.defaultFacilitiesSection?.pageTitle || "Fasilitas",
+      pageDescription: defaults.defaultFacilitiesSection?.pageDescription || "",
+      highlights: highlightsResult.docs.length > 0
+        ? highlightsResult.docs.map((h: any) => ({ body: h.body, sortOrder: h.sortOrder }))
+        : defaults.defaultFacilitiesSection?.highlights || [],
+      items,
+    }
+  } catch {
+    return {
+      pageTitle: defaults.defaultFacilitiesSection?.pageTitle || "Fasilitas",
+      pageDescription: defaults.defaultFacilitiesSection?.pageDescription || "",
+      highlights: defaults.defaultFacilitiesSection?.highlights || [],
+      items,
+    }
+  }
+}
+
 export async function getGallerySection() {
   const items = await getGalleryItems()
-  return items.map(item => ({
-    ...item,
-    image: item.image,
-  }))
+  return items.map((item) => ({ ...item, image: (item as any).image }))
 }
+
 export async function getFaqSection() {
-  return defaults.defaultFaqSection.categories
+  try {
+    const payload = await getPayloadClient()
+    const categoriesResult = await payload.find({ collection: "faq-categories" as any, sort: "sortOrder", limit: 100 })
+    if (categoriesResult.docs.length === 0) return defaults.defaultFaqSection.categories
+    const categories = []
+    for (const cat of categoriesResult.docs) {
+      const itemsResult = await payload.find({
+        collection: "faq-items" as any, sort: "sortOrder", limit: 100,
+        where: { category: { equals: (cat as any).id } },
+      })
+      categories.push({
+        name: (cat as any).name,
+        iconKey: (cat as any).iconKey,
+        sortOrder: (cat as any).sortOrder,
+        items: itemsResult.docs.map((item: any) => ({
+          question: item.question,
+          answer: item.answer,
+          sortOrder: item.sortOrder,
+        })),
+      })
+    }
+    return categories
+  } catch {
+    return defaults.defaultFaqSection.categories
+  }
 }
+
 export async function getTestimonials() {
-  return defaults.defaultTestimonialsSection.items.map(item => ({
-    ...item,
-    avatar: item.avatarPath,
-  }))
+  try {
+    const payload = await getPayloadClient()
+    const result = await payload.find({ collection: "testimonials" as any, sort: "sortOrder", where: { published: { equals: true } }, limit: 100 })
+    if (result.docs.length === 0) return defaults.defaultTestimonialsSection.items.map((item) => ({ ...item, avatar: item.avatarPath }))
+    return result.docs.map((item: any) => ({
+      name: item.name,
+      role: item.role,
+      quote: item.quote,
+      avatar: getMediaUrl(item.avatar) || "",
+      published: item.published,
+      sortOrder: item.sortOrder,
+    }))
+  } catch {
+    return defaults.defaultTestimonialsSection.items.map((item) => ({ ...item, avatar: item.avatarPath }))
+  }
 }

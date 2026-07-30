@@ -4,8 +4,7 @@ import { SignJWT, jwtVerify } from "jose"
 import { cookies } from "next/headers"
 import { cache } from "react"
 import { redirect } from "next/navigation"
-import { eq } from "drizzle-orm"
-import { getDb, schema } from "@/lib/db"
+import { getPayloadClient } from "@/lib/payload"
 
 const SESSION_COOKIE = "al-abror_santri_session"
 const SESSION_DURATION = 60 * 60 * 24 * 7
@@ -58,23 +57,25 @@ export const verifySantriSession = cache(async () => {
 })
 
 export async function getSantriProfile(userId: string) {
-  const db = getDb()
-  if (!db) return null
-  const [user] = await db
-    .select()
-    .from(schema.santriUsers)
-    .where(eq(schema.santriUsers.id, userId))
-    .limit(1)
-  return user ?? null
+  try {
+    const payload = await getPayloadClient()
+    const user = await payload.findByID({ collection: "santri-users" as any, id: userId })
+    return user ?? null
+  } catch {
+    return null
+  }
 }
 
 export async function getSantriRegistration(userId: string) {
-  const db = getDb()
-  if (!db) return null
-  const [reg] = await db
-    .select()
-    .from(schema.santriRegistrations)
-    .where(eq(schema.santriRegistrations.userId, userId))
-    .limit(1)
-  return reg ?? null
+  try {
+    const payload = await getPayloadClient()
+    const result = await payload.find({
+      collection: "santri-registrations" as any,
+      where: { user: { equals: userId } },
+      limit: 1,
+    })
+    return result.docs[0] ?? null
+  } catch {
+    return null
+  }
 }

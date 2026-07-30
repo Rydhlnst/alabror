@@ -41,7 +41,7 @@ export default async function ProgramPendidikanPage() {
                   <div className="w-12 h-1 bg-gray-300" />
                   <RichTextRenderer content={program.description} className="text-base leading-relaxed text-muted-foreground" />
                   <ul className="space-y-3">
-                    {program.points.map((point, idx) => (
+                    {program.points.map((point: { body: unknown; sortOrder: number }, idx: number) => (
                       <li key={idx} className="flex items-start gap-3 text-sm text-muted-foreground">
                         <span className="flex size-5 shrink-0 items-center justify-center bg-primary text-white text-[10px] mt-0.5">&#10003;</span>
                         <RichTextRenderer content={point.body} className="text-sm text-muted-foreground" />

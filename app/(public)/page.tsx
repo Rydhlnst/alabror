@@ -229,7 +229,7 @@ export default async function Home() {
                       <h3 className="text-lg font-bold text-gray-900 font-heading">{program.name}</h3>
                       <RichTextRenderer content={program.description} className="text-sm text-gray-500 leading-relaxed" />
                       <ul className="space-y-2">
-                        {program.points.map((point, idx) => (
+                        {program.points.map((point: { body: unknown; sortOrder: number }, idx: number) => (
                           <li key={idx} className="flex items-start gap-2 text-sm text-gray-500">
                             <span className="flex size-4 shrink-0 items-center justify-center bg-primary/10 text-primary text-[10px] mt-0.5">&#10003;</span>
                             <RichTextRenderer content={point.body} className="text-sm text-gray-500" />
@@ -320,14 +320,14 @@ export default async function Home() {
         <div className="grid gap-5 rounded-none bg-gray-900 px-6 py-8 text-white sm:gap-8 sm:px-8 sm:py-10 lg:grid-cols-[1fr_auto] lg:items-center lg:px-12">
           <ScrollAnimation direction="up" className="space-y-3">
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl font-heading text-white">
-              {homepage.ctaTitle}
+              {homepage.bottomCtaTitle}
             </h2>
-            <RichTextRenderer content={homepage.ctaDescription} className="text-sm text-gray-300" />
+            <RichTextRenderer content={homepage.bottomCtaDescription} className="text-sm text-gray-300" />
           </ScrollAnimation>
           <ScrollAnimation direction="up" delay={0.15}>
             <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 shadow-sm rounded-none" asChild>
               <a href={siteConfig.whatsapp} target="_blank" rel="noopener noreferrer">
-                {homepage.ctaLabel}
+                {homepage.bottomCtaLabel}
               </a>
             </Button>
           </ScrollAnimation>
