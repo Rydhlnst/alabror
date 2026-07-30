@@ -306,7 +306,7 @@ export function CollectionManager({
       </Card>
 
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="max-w-2xl w-[90vw] max-h-[90vh] flex flex-col p-6">
+        <DialogContent className="max-w-2xl w-[90vw] max-h-[90dvh] flex flex-col p-6">
           <form onSubmit={handleSubmit} className="flex flex-col h-full">
             <DialogHeader>
               <DialogTitle>

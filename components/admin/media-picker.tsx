@@ -164,7 +164,7 @@ export function MediaPicker({
                   {previewUrl ? "Ganti Gambar" : "Pilih Gambar"}
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-3xl w-[90vw] h-[80vh] flex flex-col p-6">
+              <DialogContent className="max-w-3xl w-[90vw] h-[80dvh] max-h-[90dvh] flex flex-col p-6">
                 <DialogHeader>
                   <DialogTitle>Pustaka Media</DialogTitle>
                 </DialogHeader>
@@ -254,11 +254,11 @@ export function MediaPicker({
       </div>
 
       <Dialog open={showConfirm} onOpenChange={(open) => { if (!open) handleCancelUpload() }}>
-        <DialogContent className="max-w-lg w-[90vw] flex flex-col p-6">
+        <DialogContent className="max-w-lg w-[90vw] max-h-[90dvh] flex flex-col p-6">
           <DialogHeader>
             <DialogTitle>Konfirmasi Unggah Gambar</DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col gap-4 py-4">
+          <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-4 py-4">
             <div className="relative aspect-video w-full rounded-md overflow-hidden border bg-muted flex items-center justify-center">
               {isUploading ? (
                 <div className="flex flex-col items-center gap-2">
