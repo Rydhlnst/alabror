@@ -4,7 +4,6 @@ import { handleServerFunctions } from "@payloadcms/next/layouts"
 import React from "react"
 import { importMap } from "./admin/importMap"
 
-import "../globals.css"
 import "./custom-styles.css"
 
 const serverFunction = async (args: { args: Record<string, unknown>; name: string }) => {
