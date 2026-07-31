@@ -1,0 +1,15 @@
+diff --git a/api.js b/api.js
+index 1234567..abcdefg 100644
+--- a/api.js
++++ b/api.js
+@@ -3414,7 +3414,8 @@ var pushSchema = async (imports, drizzleInstance, schemaFilters, tablesFilter, e
+     function render7(view5) {
+       if (typeof view5 === "string") {
+         process.stdout.write(`${view5}
+`);
+         return;
+       }
+       if (!process.stdin.isTTY || !process.stdout.isTTY) {
+-        return Promise.reject(new Error("Interactive prompts require a TTY terminal (process.stdin.isTTY or process.stdout.isTTY is false). This can happen when running in CI, piped input, or non-interactive shells."));
++        return Promise.resolve({ status: "submitted", data: view5 && typeof view5.base !== "undefined" ? view5.base : view5 });
+       }
