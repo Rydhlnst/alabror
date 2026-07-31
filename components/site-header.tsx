@@ -52,7 +52,7 @@ function NavDropdown({ item, pathname }: { item: { label: string; href: string; 
       <button
         onClick={() => setOpen(!open)}
         className={cn(
-          "flex items-center gap-1 px-4 py-3 text-sm font-medium transition-colors",
+          "flex items-center gap-1 px-3 xl:px-4 py-3 text-[13px] xl:text-sm font-medium transition-colors whitespace-nowrap",
           hasActiveChild || (item.href !== "#" && isActivePath(pathname, item.href))
             ? "text-primary font-semibold"
             : "text-gray-700 hover:text-primary"
@@ -181,7 +181,7 @@ export function SiteHeader({
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center border-l border-gray-100 ml-4 pl-4">
+          <nav className="hidden lg:flex items-center border-l border-gray-100 ml-4 pl-4 shrink-0">
             {mainNav.map((item) => {
               if (item.children) {
                 return <NavDropdown key={item.label} item={item} pathname={pathname} />
@@ -191,7 +191,7 @@ export function SiteHeader({
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "px-4 py-3 text-sm font-medium transition-colors",
+                    "px-3 xl:px-4 py-3 text-[13px] xl:text-sm font-medium transition-colors whitespace-nowrap",
                     isActivePath(pathname, item.href)
                       ? "text-primary font-semibold"
                       : "text-gray-700 hover:text-primary"
@@ -204,7 +204,7 @@ export function SiteHeader({
           </nav>
 
           {/* Desktop CTA & Mobile Menu */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             {psbConfig.isOpen && (
               <Button size="sm" className="hidden lg:flex bg-gray-900 text-white hover:bg-gray-800 rounded-none px-5 py-2.5 text-sm font-medium" asChild>
                 <a href={psbConfig.daftarLink}>
