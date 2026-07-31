@@ -1,13 +1,5 @@
 import { buildConfig } from "payload"
 import { postgresAdapter } from "@payloadcms/db-postgres"
-
-// sharp is optional — libvips may not be present in all deployment environments
-let sharp: Awaited<typeof import("sharp")>["default"] | undefined
-try {
-  sharp = (await import("sharp")).default
-} catch {
-  // image resizing disabled; uploads still work via S3
-}
 import { lexicalEditor } from "@payloadcms/richtext-lexical"
 import { s3Storage } from "@payloadcms/storage-s3"
 
@@ -117,7 +109,7 @@ export default buildConfig({
     }),
   ],
 
-  sharp,
+  sharp: undefined,
 
   secret: process.env.SESSION_SECRET || "payload-secret-change-me",
 
