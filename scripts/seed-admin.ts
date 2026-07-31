@@ -6,7 +6,7 @@ dotenv.config()
 
 function hashPassword(password: string, salt: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    pbkdf2(password, salt, 310000, 32, "sha256", (err, derivedKey) => {
+    pbkdf2(password, salt, 25000, 512, "sha256", (err, derivedKey) => {
       if (err) return reject(err)
       resolve(derivedKey.toString("hex"))
     })
