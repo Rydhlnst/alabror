@@ -35,6 +35,7 @@ import { ProfileOrgRows } from "./collections/ProfileOrgRows"
 import { ProfileProgramRows } from "./collections/ProfileProgramRows"
 import { ContactMethods } from "./collections/ContactMethods"
 import { ContactLocations } from "./collections/ContactLocations"
+import { Admins } from "./collections/Admins"
 import { SantriUsers } from "./collections/SantriUsers"
 import { SantriRegistrations } from "./collections/SantriRegistrations"
 
@@ -46,7 +47,7 @@ import { ContactPage } from "./globals/ContactPage"
 
 export default buildConfig({
   admin: {
-    user: "santri-users",
+    user: "admins",
     importMap: {
       baseDir: "./app/(payload)",
       importMapFile: "./app/(payload)/admin/importMap.js",
@@ -56,6 +57,7 @@ export default buildConfig({
   editor: lexicalEditor({}),
 
   collections: [
+    Admins,
     Navigation,
     Media,
     HeroStats,
