@@ -2,3 +2,12 @@ allowBuilds:
   esbuild: true
   sharp: true
   unrs-resolver: true
+
+supportedArchitectures:
+  os:
+    - linux
+    - win32
+    - darwin
+  cpu:
+    - x64
+    - arm64
