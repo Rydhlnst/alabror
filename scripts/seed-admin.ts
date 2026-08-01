@@ -1,35 +1,40 @@
-import { getPayload } from "payload"
-import config from "@payload-config"
+import { randomBytes, pbkdf2 } from "node:crypto"
+import postgres from "postgres"
+import * as dotenv from "dotenv"
+dotenv.config()
+
+function generateSalt(): string {
+  return randomBytes(32).toString("hex")
+}
+
+function hashPassword(password: string, salt: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    pbkdf2(password, salt, 25000, 512, "sha256", (err, derivedKey) => {
+      if (err) return reject(err)
+      resolve(derivedKey.toString("hex"))
+    })
+  })
+}
 
 async function main() {
-  const payload = await getPayload({ config })
+  const client = postgres(process.env.DATABASE_URL!, { max: 1 })
 
   const email = process.env.ADMIN_EMAIL || "admin@alabror.id"
   const password = process.env.ADMIN_PASSWORD || "password123"
   const name = process.env.ADMIN_NAME || "Administrator"
 
-  const existing = await payload.find({
-    collection: "admins" as any,
-    where: { email: { equals: email } },
-    limit: 1,
-  })
+  await client.unsafe("DELETE FROM admins WHERE email = $1", [email])
 
-  if (existing.docs.length > 0) {
-    console.log(`Admin "${email}" already exists, skipping.`)
-    await payload.destroy()
-    return
-  }
+  const salt = generateSalt()
+  const hash = await hashPassword(password, salt)
 
-  await payload.create({
-    collection: "admins" as any,
-    data: { email, password, name },
-  })
+  await client.unsafe(
+    "INSERT INTO admins (name, email, salt, hash, login_attempts, lock_until, created_at, updated_at) VALUES ($1, $2, $3, $4, 0, NULL, NOW(), NOW())",
+    [name, email, salt, hash]
+  )
 
-  console.log(`Admin created: ${email}`)
-  await payload.destroy()
+  console.log(`Admin created: ${email} (salt: ${salt.length} chars, hash: ${hash.length} chars)`)
+  await client.end()
 }
 
-main().catch((err) => {
-  console.error("Failed to seed admin:", err)
-  process.exit(1)
-})
+main().catch((err) => { console.error(err); process.exit(1) })
